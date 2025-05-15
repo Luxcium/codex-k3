@@ -20,17 +20,28 @@ for dir in "${DIRS[@]}"; do
   fi
 done
 
-# Create files and add placeholder if empty
+# Create files and add placeholder if empty, with size and content validation
 for file in "${FILES[@]}"; do
+  # Check if file exists
   if [ ! -f "$file" ]; then
     touch "$file"
     echo "Created file: $file"
   else
-    echo "File already exists: $file"
+    # File exists, check size and log details
+    size=$(stat -c%s "$file")
+    if [ "$size" -eq 0 ]; then
+      echo "File $file exists but is empty (size=0)."
+    else
+      echo "File $file already exists (size=$size bytes)."
+    fi
   fi
+
+  # Only add placeholder if file is empty
   if [ ! -s "$file" ]; then
     echo "# Placeholder for $file" > "$file"
     echo "Added placeholder to $file"
+  else
+    echo "File $file is not empty, skipping placeholder."
   fi
 done
 

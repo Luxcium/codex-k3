@@ -25,6 +25,17 @@
 3. Place all future shell scripts in the `scripts/` directory.
 4. Update this README with any new rules before implementing them.
 
+## Script Validation and Logging
+
+The `scripts/setup_project.sh` script now includes:
+- File existence and size checks before writing
+- Directory creation with `mkdir -p` and validation
+- Logging of all actions (creation, skipping, size reporting)
+- Never overwrites existing files; only adds placeholders if files are empty
+- Clear annotations and comments explaining each validation step
+
+All actions are self-documented and resilient to repeated runs. Review the script for detailed logic and intent.
+
 ---
 
 > This README and all scripts must remain markdown-lint strict mode compliant at all times.
