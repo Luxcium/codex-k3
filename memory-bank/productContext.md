@@ -31,6 +31,13 @@ This Memory Bank is established to ensure every project begins with a clear unde
 - **All rules and intentions must be documented in the README before implementation.**
 - **The README and all scripts must remain markdown-lint strict mode compliant at all times.**
 
+## Dependencies and Relationships
+
+- **Depends On:** _[List upstream dependencies, e.g., projectbrief.md, systemPatterns.md, etc.]_
+- **Required By:** _[List downstream dependencies, e.g., other Memory Bank files]_
+- **Why This Order:** _[Explain why productContext.md is required before other documentation]_
+- **Impact Analysis:** _[Describe what happens if this file is not kept up to date or if dependencies change]_
+
 ## Call to Action
 
 > **All agents and contributors must review, update, and self-regulate this file as soon as a project context is established.**  

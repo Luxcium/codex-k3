@@ -35,6 +35,13 @@ This file tracks what works, what remains to be built, current status, and known
 - **All rules and intentions must be documented in the README before implementation.**
 - **The README and all scripts must remain markdown-lint strict mode compliant at all times.**
 
+## Dependencies and Relationships
+
+- **Depends On:** _[List upstream dependencies, e.g., activeContext.md, techContext.md, etc.]_
+- **Required By:** _[List downstream dependencies, if any]_
+- **Why This Order:** _[Explain why progress.md depends on active context and technical context]_
+- **Impact Analysis:** _[Describe what happens if this file is not kept up to date or if dependencies change]_
+
 ## Call to Action
 
 > **All agents and contributors must review, update, and self-regulate this file as progress is made.**  

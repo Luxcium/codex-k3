@@ -37,6 +37,13 @@ This Memory Bank is initialized to provide a clear, adaptable template for docum
 - **All rules and intentions must be documented in the README before implementation.**
 - **The README and all scripts must remain markdown-lint strict mode compliant at all times.**
 
+## Dependencies and Relationships
+
+- **Depends On:** _[List upstream dependencies, e.g., projectbrief.md, productContext.md, etc.]_
+- **Required By:** _[List downstream dependencies, e.g., techContext.md, activeContext.md, etc.]_
+- **Why This Order:** _[Explain why systemPatterns.md must be established before technical or active context documentation]_
+- **Impact Analysis:** _[Describe what happens if this file is not kept up to date or if dependencies change]_
+
 ## Call to Action
 
 > **All agents and contributors must review, update, and self-regulate this file as the system architecture and patterns evolve.**  

@@ -13,10 +13,23 @@
     - `.gitignore` (file)
     - `.clinerules` (file)
     - `README.md` (file)
+    - `memory-bank/dependencies.md` (file)
 4. All rules and intentions must be documented in the README before implementation.
 5. The README must always be markdown-lint strict mode compliant.
 6. All scripts must be idempotent and resilient to repeated runs.
 7. All new rules must be added to the README before being implemented.
+8. All dependencies and relationships must be tracked in `memory-bank/dependencies.md` and referenced in all Memory Bank files.
+9. Every dependency must include a "why" explanation and an impact analysis. Circular dependencies must be justified. Bidirectional tracking is required.
+
+## Dependency Tracking
+
+- All files, components, and processes must explicitly document what they depend on, what depends on them, and why.
+- The `memory-bank/dependencies.md` file serves as the registry for all explicit, implicit, and reverse dependencies.
+- Each Memory Bank file must include a "Dependencies and Relationships" section, listing:
+  - **Depends On:** Upstream dependencies
+  - **Required By:** Downstream dependencies
+  - **Why This Order:** Rationale for dependency order
+  - **Impact Analysis:** Consequences of changes or reversals
 
 ## Setup Instructions
 
