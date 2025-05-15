@@ -26,6 +26,10 @@ This Memory Bank is initialized to provide a replicable, self-explanatory docume
 - Maintain clarity and completeness at all times.
 - Ensure all documentation is up-to-date and reflects the current state of the project.
 - Facilitate seamless collaboration between agents and contributors.
+- **All setup and file/folder creation must be performed via scripts in the `scripts/` directory, never manually.**
+- **Scripts must be idempotent, must not overwrite existing files, and must warn or skip if files/folders exist.**
+- **All rules and intentions must be documented in the README before implementation.**
+- **The README and all scripts must remain markdown-lint strict mode compliant at all times.**
 
 ## Call to Action
 

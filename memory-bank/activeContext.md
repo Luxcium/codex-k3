@@ -30,6 +30,10 @@ This Memory Bank is initialized to provide a template for tracking active work a
 
 - Document important choices and their rationale.
 - Update as new decisions are made or previous ones are revised.
+- **All setup and file/folder creation must be performed via scripts in the `scripts/` directory, never manually.**
+- **Scripts must be idempotent, must not overwrite existing files, and must warn or skip if files/folders exist.**
+- **All rules and intentions must be documented in the README before implementation.**
+- **The README and all scripts must remain markdown-lint strict mode compliant at all times.**
 
 ## Call to Action
 
