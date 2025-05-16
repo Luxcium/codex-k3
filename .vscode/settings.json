@@ -1,0 +1,34 @@
+{
+    // 1. Code generation instructions
+    "github.copilot.chat.codeGeneration.instructions": [
+        {
+            "text": "Use TypeScript and follow the Airbnb style guide for all generated code."
+        }
+    ],
+    // 2. Test generation instructions
+    "github.copilot.chat.testGeneration.instructions": [
+        {
+            "text": "Write tests using Jest. Ensure each function has both positive and negative test cases."
+        }
+    ],
+    // 3. Code review instructions
+    "github.copilot.chat.reviewSelection.instructions": [
+        {
+            "text": "Check for modularity, code comments, and absence of direct mutations of shared state."
+        }
+    ],
+    // 4. Commit message generation instructions
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "text": "Follow the Conventional Commits format (e.g., feat: add new login page). Keep messages under 72 characters."
+        }
+    ],
+    // 5. Pull request title and description generation instructions
+    "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+        {
+            "text": "Start with a concise summary of the main change. List key updates as bullet points. Reference related issues where possible."
+        }
+    ],
+    // 6. Code generation from files
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true
+}
