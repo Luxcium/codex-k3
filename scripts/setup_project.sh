@@ -8,7 +8,7 @@ set -e
 DIRS=(".github" ".vscode" "memory-bank" "scripts")
 
 # Files to create (with placeholders if empty)
-FILES=(".gitignore" ".clinerules" "README.md")
+FILES=(".gitignore" ".clinerules" "README.md" "AGENTS.md")
 
 # Create directories
 for dir in "${DIRS[@]}"; do

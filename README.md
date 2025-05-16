@@ -13,7 +13,15 @@
     - `.gitignore` (file)
     - `.clinerules` (file)
     - `README.md` (file)
+    - `AGENTS.md` (file, replaces any use of `codex.md`)
     - `memory-bank/dependencies.md` (file)
+## AGENTS.md Migration
+
+- `AGENTS.md` is now the default repository context/instructions markdown file for Codex CLI and related tools.
+- All references to `codex.md` in scripts, documentation, and templates must be replaced with `AGENTS.md`.
+- New and existing projects must include an `AGENTS.md` file at the root.
+- Workflows and automation should ignore `codex.md` and use `AGENTS.md` exclusively.
+
 4. All rules and intentions must be documented in the README before implementation.
 5. The README must always be markdown-lint strict mode compliant.
 6. All scripts must be idempotent and resilient to repeated runs.
