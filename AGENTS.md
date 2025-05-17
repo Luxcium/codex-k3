@@ -24,4 +24,4 @@ This file serves as the default repository context and instructions markdown fil
 
 ---
 
-> This file is the single source of truth for agent and repository context. Do not reference or maintain `codex.md` going forward.
+> This file is the single source of truth for agent and repository context. Do not reference or maintain `codex.md` going forward. 

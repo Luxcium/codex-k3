@@ -31,4 +31,10 @@
     ],
     // 6. Code generation from files
     "github.copilot.chat.codeGeneration.useInstructionFiles": true
+
+    ,"chat.promptFilesLocations":{
+
+        ".github/prompts": true,
+        
+    }, 
 }

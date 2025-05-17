@@ -21,6 +21,7 @@
 - All references to `codex.md` in scripts, documentation, and templates must be replaced with `AGENTS.md`.
 - New and existing projects must include an `AGENTS.md` file at the root.
 - Workflows and automation should ignore `codex.md` and use `AGENTS.md` exclusively.
+- **`codex.md` is deprecated and must not be referenced, maintained, or included in any workflow. Only `AGENTS.md` is valid going forward.**
 
 4. All rules and intentions must be documented in the README before implementation.
 5. The README must always be markdown-lint strict mode compliant.

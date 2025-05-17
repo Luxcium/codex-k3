@@ -4,11 +4,12 @@
 
 ### Reading Protocol
 1. **Continuous Monitoring**
-   - Memory Bank files must be read at the start of EVERY task
+   - Memory Bank files and AGENTS.md must be read at the start of EVERY task
    - Files must be re-read when changes are detected
    - Changes in one file may affect others
 
 2. **Reading Order**
+   - AGENTS.md (repository context/instructions)
    - projectbrief.md (foundation)
    - productContext.md (purpose)
    - systemPatterns.md (architecture)
@@ -59,6 +60,7 @@
 ├── scripts/
 │   └── setup_project.sh
 ├── .gitignore
+├── AGENTS.md
 ├── .clinerules
 └── README.md
 ```
