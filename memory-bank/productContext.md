@@ -44,4 +44,6 @@ This Memory Bank is established to ensure every project begins with a clear unde
 > **Do not proceed with project-specific design or development until this file is aligned with the current project context.**  
 > **Update this file immediately upon any change in project goals or user experience requirements.**
 
+**See [memory-bank/rules/reading-protocol.md](../rules/reading-protocol.md), [memory-bank/rules/writing-protocol.md](../rules/writing-protocol.md), and [memory-bank/rules/verification.md](../rules/verification.md) for required protocols.**
+
 ---

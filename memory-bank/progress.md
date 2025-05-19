@@ -14,7 +14,9 @@ This file tracks what works, what remains to be built, current status, and known
 
 ## What Works
 
-- List completed features, components, or milestones here.
+- Migration to modular rules system complete: All project rules and protocols are now maintained in `memory-bank/rules/` as modular, cross-referenced markdown files.
+- AGENTS.md, README.md, and all Memory Bank files updated to reference the new rules folder and protocols.
+- Project is now fully aligned with prompt-engineering best practices and Memory Bank guidelines.
 
 ## What's Left
 
@@ -47,5 +49,7 @@ This file tracks what works, what remains to be built, current status, and known
 > **All agents and contributors must review, update, and self-regulate this file as progress is made.**  
 > **Do not proceed with new work or mark tasks as complete until this file accurately reflects the current project status.**  
 > **Update this file immediately upon any change in progress, status, or known issues.**
+
+**See [memory-bank/rules/process-evolution.md](../rules/process-evolution.md), [memory-bank/rules/verification.md](../rules/verification.md), and [memory-bank/rules/learning-journal.md](../rules/learning-journal.md) for required protocols and self-regulation guidance.**
 
 ---

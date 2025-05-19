@@ -44,4 +44,6 @@ This Memory Bank is initialized to provide a replicable, self-explanatory docume
 > **Do not proceed with project-specific work until this file is reviewed and aligned with the current project context.**  
 > **Update this file immediately upon any change in project scope or requirements.**
 
+**See [memory-bank/rules/reading-protocol.md](../rules/reading-protocol.md), [memory-bank/rules/writing-protocol.md](../rules/writing-protocol.md), and [memory-bank/rules/verification.md](../rules/verification.md) for required protocols.**
+
 ---

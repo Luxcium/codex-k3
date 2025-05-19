@@ -49,4 +49,6 @@ This Memory Bank is initialized to provide a template for documenting all techno
 > **Do not proceed with technical implementation until this file is aligned with the current technology stack and constraints.**  
 > **Update this file immediately upon any change in technologies, setup, constraints, or dependencies.**
 
+**See [memory-bank/rules/pattern-examples.md](../rules/pattern-examples.md), [memory-bank/rules/reading-protocol.md](../rules/reading-protocol.md), and [memory-bank/rules/verification.md](../rules/verification.md) for required protocols and implementation patterns.**
+
 ---
