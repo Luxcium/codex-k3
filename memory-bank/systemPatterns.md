@@ -50,6 +50,6 @@ This Memory Bank is initialized to provide a clear, adaptable template for docum
 > **Do not proceed with system-level changes until this file is aligned with the current architecture.**  
 > **Update this file immediately upon any change in system structure, patterns, or technical decisions.**
 
-**See [memory-bank/rules/pattern-examples.md](../rules/pattern-examples.md), [memory-bank/rules/reading-protocol.md](../rules/reading-protocol.md), and [memory-bank/rules/verification.md](../rules/verification.md) for required protocols and implementation patterns.**
+**See [.clinerules/pattern-examples.md](../.clinerules/pattern-examples.md), [.clinerules/reading-protocol.md](../.clinerules/reading-protocol.md), and [.clinerules/verification.md](../.clinerules/verification.md) for required protocols and implementation patterns.**
 
 ---

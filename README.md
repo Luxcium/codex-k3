@@ -2,7 +2,7 @@
 
 ## Rules and Protocols
 
-All operational rules and protocols are maintained in the modular files under `memory-bank/rules/`. All agents and contributors must read and follow these files at the start of every session and before any planning or implementation.
+All operational rules and protocols are maintained in the modular files under `.clinerules/`. All agents and contributors must read and follow these files at the start of every session and before any planning or implementation.
 
 > **All project setup and file/folder creation must be performed via scripts, never manually.**
 

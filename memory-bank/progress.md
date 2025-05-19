@@ -14,7 +14,7 @@ This file tracks what works, what remains to be built, current status, and known
 
 ## What Works
 
-- Migration to modular rules system complete: All project rules and protocols are now maintained in `memory-bank/rules/` as modular, cross-referenced markdown files.
+- Migration to modular rules system complete: All project rules and protocols are now maintained in `.clinerules/` as modular, cross-referenced markdown files.
 - AGENTS.md, README.md, and all Memory Bank files updated to reference the new rules folder and protocols.
 - Project is now fully aligned with prompt-engineering best practices and Memory Bank guidelines.
 
@@ -50,6 +50,6 @@ This file tracks what works, what remains to be built, current status, and known
 > **Do not proceed with new work or mark tasks as complete until this file accurately reflects the current project status.**  
 > **Update this file immediately upon any change in progress, status, or known issues.**
 
-**See [memory-bank/rules/process-evolution.md](../rules/process-evolution.md), [memory-bank/rules/verification.md](../rules/verification.md), and [memory-bank/rules/learning-journal.md](../rules/learning-journal.md) for required protocols and self-regulation guidance.**
+**See [.clinerules/process-evolution.md](../.clinerules/process-evolution.md), [.clinerules/verification.md](../.clinerules/verification.md), and [.clinerules/learning-journal.md](../.clinerules/learning-journal.md) for required protocols and self-regulation guidance.**
 
 ---

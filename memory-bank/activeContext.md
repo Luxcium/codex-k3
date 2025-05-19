@@ -18,7 +18,7 @@ This Memory Bank is initialized to provide a template for tracking active work a
 
 ## Recent Changes
 
-- Migrated all project rules and protocols from a monolithic `.clinerules` file to modular files in `memory-bank/rules/`.
+- Migrated all project rules and protocols from a monolithic `.clinerules` file to modular files in `.clinerules/`.
 - Updated AGENTS.md, README.md, and all Memory Bank files to reference the new rules folder and protocols.
 - Ensured all rules are discoverable, cross-referenced, and markdown-lint compliant.
 - Aligned the project with prompt-engineering best practices and Memory Bank guidelines.
@@ -50,6 +50,6 @@ This Memory Bank is initialized to provide a template for tracking active work a
 > **Do not proceed with new work or changes until this file accurately reflects the current state and priorities.**  
 > **Update this file immediately upon any change in work focus, plans, or decisions.**
 
-**See [memory-bank/rules/process-evolution.md](../rules/process-evolution.md), [memory-bank/rules/verification.md](../rules/verification.md), and [memory-bank/rules/learning-journal.md](../rules/learning-journal.md) for required protocols and self-regulation guidance.**
+**See [.clinerules/process-evolution.md](../.clinerules/process-evolution.md), [.clinerules/verification.md](../.clinerules/verification.md), and [.clinerules/learning-journal.md](../.clinerules/learning-journal.md) for required protocols and self-regulation guidance.**
 
 ---

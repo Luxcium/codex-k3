@@ -7,7 +7,7 @@ This file serves as the default repository context and instructions markdown fil
 ## Usage
 
 - All project and agent instructions, context, and operational rules should be documented here.
-- The primary entry point for project rules and protocols is `memory-bank/rules/`. All agents must read and follow the modular rule files in this folder at the start of every session and before any planning or implementation.
+- The primary entry point for project rules and protocols is `.clinerules/`. All agents must read and follow the modular rule files in this folder at the start of every session and before any planning or implementation.
 - Any reference to `codex.md` in scripts, documentation, or templates must be replaced with `AGENTS.md`.
 - New projects must include this file at the root.
 - Workflows and automation should ignore `codex.md` and use `AGENTS.md` exclusively.
