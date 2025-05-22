@@ -22,6 +22,12 @@ This file serves as the default repository context and instructions markdown fil
 
 - All agents and contributors must follow the instructions and context provided in this file.
 - Update this file as project context or operational rules evolve.
+ 
+- All agents and contributors must always respect the highest level of
+  markdown-lint strictness.
+- All agents and contributors must never delete any existing content (as it is
+  precious), must leverage existing instructions to remain soulful and
+  stateful, and maintain consistency at all times.
 
 ---
 
@@ -33,10 +39,34 @@ This file serves as the default repository context and instructions markdown fil
 - **Team Work**: the user is the team leader and will be working as the only human in the team... please understand the configuration files of the other agents so that you can decide when to read the context for the other agents and when to not read it.
 
 ## Agents Context
-- **Codex CLI**: The main agent that will be used to create and maintain the project. It will be responsible for generating code, scripts, and documentation. It will also be used to automate workflows and enhance the overall development experience. must keep the integrity of the AGENTS.md file, must not wip this file and must do modification in a conservative manner to learn and to rememeber, as always the highest level of markdon-lit strictness must be used.
 
-- **Cline AI**: An agent that will assist in vscode, the main instructions to cline ai are in the `.clinerules/` folder. Cline AI must absolutely follow these instructions on how to maintain their own instruction files to remember and learn from . It will be used to generate code, scripts, and documentation. It will also be used to automate workflows and enhance the overall development experience. It will not be used to create or maintain the AGENTS.md file.
+- **Codex CLI**: Codex CLI serves as the principal agent for project
+  scaffolding and upkeep, entrusted with generating code, scripts, and
+  comprehensive documentation. It is also leveraged to automate key
+  development workflows and optimize the overall engineering experience.
+  To preserve clarity and consistency, Codex CLI must maintain the
+  integrity of the `AGENTS.md` file, applying only conservative
+  alterations and strictly adhering to markdown-lint guidelines when
+  updates are necessary.
 
-- **VScode Copilot**: An agent that will assist in vscode, and on github. They leverage the file .githu, the main instructions to cline ai are in the `.clinerules/` folder. VScode Copilot must absolutely follow these instructions on how to maintain their own instruction files to remember and learn from . It will be used to generate code, scripts, and documentation. It will also be used to automate workflows and enhance the overall development experience. It will not be used to create or maintain the AGENTS.md file.
+- **Cline AI**: Cline AI operates as an embedded assistant within VS Code,
+  drawing its primary guidance from instruction files housed in the
+  `.clinerules/` directory. Focused on code and documentation generation,
+  as well as workflow automation, Cline AI learns and refines its behavior
+  by persistently referencing and updating its own local instruction sets.
+  It is explicitly scoped to tasks outside of `AGENTS.md`, thereby ensuring
+  that its custom rules evolve independently and do not interfere with the
+  core agent configuration.
 
-The instruction file used by GitHub Copilot in VS Code allows developers to customize the assistant's behavior by specifying how it should interpret, prioritize, and generate code suggestions. This file (typically named `.copilot` or configured via settings) enables a user to influence Copilot’s tone, style, or focus (e.g., preferring concise code, following specific naming conventions, or adhering to certain documentation practices). It is designed to give context-aware, adaptive responses aligned with the user’s coding habits or project guidelines. An external agent reading this file should interpret it as a set of high-level behavioral and formatting preferences intended to tailor AI code completions within the developer’s environment.
+- **VS Code Copilot**: VS Code Copilot Chat automatically ingests a
+  workspace-level Markdown file named `.github/copilot-instructions.md`—
+  when the `github.copilot.chat.codeGeneration.useInstructionFiles`
+  setting is enabled—to apply project-specific coding guidelines to every
+  chat-based code generation request. It also recognizes additional
+  `.instructions.md` files placed in folders such as `.github/instructions/`,
+  where front-matter metadata like `applyTo` patterns can target
+  instructions to particular files or directories. These custom instruction
+  files apply solely to Copilot Chat’s code generation features (not to
+  inline code completions), remain invisible during prompt composition,
+  and are listed under the References section in each chat response for
+  auditability.
