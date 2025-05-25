@@ -30,6 +30,12 @@ _List all direct dependencies here. For each, specify:_
 - **Why:** Docker workflow must align with project requirements and technical architecture
 - **Impact:** Changes to project scope or technical patterns require workflow updates
 
+### Directory Structure Guidelines
+- **Source:** README.md (Directory Structure Guidelines section)
+- **Target:** Project setup and organization standards
+- **Why:** Provides standardized language and framework organization for consistent project structure
+- **Impact:** Changes to directory structure require updates to setup scripts, documentation, and development workflows
+
 ---
 
 ## Implicit Dependencies

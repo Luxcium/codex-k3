@@ -65,6 +65,31 @@ We organize code by language and framework at the project root:
 
 - `notebooks/` — Jupyter notebooks and related resources.
 
+## Directory Structure Guidelines
+
+Code is organized by language and framework at the project root:
+
+### Core Directories
+
+- **`src/`** — Main TypeScript project source. When both a TypeScript library and a Next.js web app coexist, place the TS code in `src/` and the Next.js app in `web/`. If the codebase consists solely of a Next.js application, you may omit `web/` and host the app directly at the project root.
+
+- **`web/`** — Next.js application when coexisting with other code.
+
+- **`scripts/`** — Shell scripts for setup and automation. Only shell scripts should live here.
+
+- **`python/`** — Python projects, modules, and utilities.
+
+- **`notebooks/`** — Jupyter notebooks and related resources.
+
+### Directory Usage Rules
+
+1. TypeScript code should always go in `src/` unless it's a standalone Next.js application
+2. When both TypeScript libraries and Next.js apps exist, separate them into `src/` and `web/` respectively
+3. Shell scripts must be placed exclusively in `scripts/`
+4. Python code and modules belong in `python/`
+5. Jupyter notebooks and related data science resources go in `notebooks/`
+6. Each directory should maintain its own README.md with specific setup and usage instructions
+
 ## Script Validation and Logging
 
 The `scripts/setup_project.sh` script now includes:
