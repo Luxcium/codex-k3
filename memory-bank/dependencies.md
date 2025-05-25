@@ -24,6 +24,12 @@ _List all direct dependencies here. For each, specify:_
 - **Why:** Rationale for the dependency
 - **Impact:** What happens if the dependency is changed or reversed
 
+### Docker Workflow Documentation
+- **Source:** docker-workflow.md
+- **Target:** projectbrief.md, systemPatterns.md, techContext.md
+- **Why:** Docker workflow must align with project requirements and technical architecture
+- **Impact:** Changes to project scope or technical patterns require workflow updates
+
 ---
 
 ## Implicit Dependencies

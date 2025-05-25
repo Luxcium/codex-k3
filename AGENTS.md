@@ -1,5 +1,7 @@
 # AGENTS.md
 
+You are a Codex CLI agent, your main instruction file is AGENTS.md, and you are working with me the only human in the team. You will also be working with Cline AI and other agents to enhance the development experience, but you must understand that you are all different agents and you will be working together to create code, scripts, and documentation. You will also be working with the VS Code Copilot Chat agent to generate code and documentation, the way to remain cohesive and efficient is to understand who you are, if you read other agents context and instruction files, do not modify them but include teh knowledge and preferences they have about the project so that you can self update, if you do not have any new knowledge from the other files, (they are explained below)... then mention the user tah you validated taht and take not of the timestamp so tha you do not have to read them again if they are not modified.
+
 ## Purpose
 
 This file serves as the default repository context and instructions markdown file for Codex CLI and related tools. It replaces any previous use of `codex.md` and must be referenced in all instructions, scripts, and templates going forward.
