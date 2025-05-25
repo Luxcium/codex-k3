@@ -17,14 +17,18 @@ This file tracks what works, what remains to be built, current status, and known
 - Migration to modular rules system complete: All project rules and protocols are now maintained in `.clinerules/` as modular, cross-referenced markdown files.
 - AGENTS.md, README.md, and all Memory Bank files updated to reference the new rules folder and protocols.
 - Project is now fully aligned with prompt-engineering best practices and Memory Bank guidelines.
+- Code organization standard documented and enforced in systemPatterns.md, techContext.md, and activeContext.md.
 
 ## What's Left
 
-- List outstanding tasks, features, or improvements here.
+- Review all Memory Bank and .clinerules files for cross-reference and compliance with the new code organization standard.
+- Verify markdown-lint compliance for all updated documentation.
+- Communicate the new standard to all contributors and ensure script-driven enforcement.
 
 ## Current Status
 
-- Summarize the current state of the project.
+- Code organization standard is now documented and enforced across architectural and technical documentation.
+- Remaining work is focused on propagation, verification, and communication of the standard.
 
 ## Known Issues
 

@@ -14,10 +14,25 @@ This file documents the system architecture, key technical decisions, design pat
 
 ## Architecture Overview
 
+**Project Root Code Organization Standard**
+
+- `src/` — Main TypeScript project source. When both a TypeScript library and a Next.js web app coexist, place the TS code in `src/` and the Next.js app in `web/`. If the codebase consists solely of a Next.js application, you may omit `web/` and host the app directly at the project root.
+- `web/` — Next.js application when coexisting with other code.
+- `scripts/` — Shell scripts for setup and automation. Only shell scripts should live here.
+- `python/` — Python projects, modules, and utilities.
+- `notebooks/` — Jupyter notebooks and related resources.
+
+**Rationale:**  
+Organizing code by language and framework at the project root ensures clarity, modularity, and scalability. This structure supports multi-language, multi-framework projects and enforces separation of concerns. All directory and file creation must be performed via scripts in `scripts/`, never manually, and all documentation must remain markdown-lint compliant.
+
 This Memory Bank is initialized to provide a clear, adaptable template for documenting system architecture and patterns. It is designed to be updated as soon as a project context or architecture is defined.
 
 ## Key Technical Decisions
 
+- Adopted a standardized project root organization by language and framework (see Architecture Overview).
+- All setup and file/folder creation must be performed via scripts in the `scripts/` directory, never manually.
+- Scripts must be idempotent, must not overwrite existing files, and must warn or skip if files/folders exist.
+- All documentation and scripts must be markdown-lint strict mode compliant.
 - All major technical decisions must be documented here.
 - Rationale for each decision should be clear and accessible.
 - Updates must be made as the system evolves.

@@ -18,12 +18,21 @@ This Memory Bank is initialized to provide a template for documenting all techno
 
 ## Development Setup
 
+- The project root must be organized by language and framework as specified in [systemPatterns.md](./systemPatterns.md):
+  - `src/` for TypeScript sources
+  - `web/` for Next.js apps (when coexisting)
+  - `scripts/` for shell scripts only
+  - `python/` for Python code
+  - `notebooks/` for Jupyter notebooks
+- All directory and file creation must be performed via scripts in `scripts/`, never manually.
 - Document environment setup and configuration.
 - Ensure instructions are clear for onboarding new agents or contributors.
 - Update as tooling or setup changes.
 
 ## Technical Constraints
 
+- Codebase organization must follow the standard described in [systemPatterns.md](./systemPatterns.md).
+- All setup and file/folder creation must be script-driven and markdown-lint compliant.
 - List any known limitations or requirements.
 - Update as new constraints are discovered or resolved.
 

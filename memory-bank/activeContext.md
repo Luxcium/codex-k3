@@ -14,28 +14,27 @@ This file tracks the current work focus, recent changes, next steps, and active 
 
 ## Current Work Focus
 
-This Memory Bank is initialized to provide a template for tracking active work and decisions. Update this section as soon as work begins or priorities shift.
+Documenting and enforcing the code organization standard across the Memory Bank and project documentation. Ensuring all references, rationale, and compliance steps are clearly recorded and cross-referenced.
 
 ## Recent Changes
 
-- Migrated all project rules and protocols from a monolithic `.clinerules` file to modular files in `.clinerules/`.
-- Updated AGENTS.md, README.md, and all Memory Bank files to reference the new rules folder and protocols.
-- Ensured all rules are discoverable, cross-referenced, and markdown-lint compliant.
-- Aligned the project with prompt-engineering best practices and Memory Bank guidelines.
+- Added project root code organization standard to systemPatterns.md (Architecture Overview, Key Technical Decisions).
+- Updated techContext.md (Development Setup, Technical Constraints) to reference and enforce the standard.
+- Began propagation of the standard to all relevant documentation and compliance sections.
 
 ## Next Steps
 
-- Clearly outline upcoming actions and priorities.
-- Update as plans evolve.
+- Update progress.md to track this documentation update as an outstanding and then completed task.
+- Review all Memory Bank and .clinerules files for cross-reference and compliance.
+- Verify markdown-lint compliance for all updated documentation.
+- Communicate the new standard to all contributors and ensure script-driven enforcement.
 
 ## Active Decisions
 
-- Document important choices and their rationale.
-- Update as new decisions are made or previous ones are revised.
-- **All setup and file/folder creation must be performed via scripts in the `scripts/` directory, never manually.**
-- **Scripts must be idempotent, must not overwrite existing files, and must warn or skip if files/folders exist.**
-- **All rules and intentions must be documented in the README before implementation.**
-- **The README and all scripts must remain markdown-lint strict mode compliant at all times.**
+- Adopted and documented a standardized project root organization by language and framework.
+- All setup and file/folder creation must be performed via scripts in the `scripts/` directory, never manually.
+- Scripts must be idempotent, must not overwrite existing files, and must warn or skip if files/folders exist.
+- All documentation and scripts must be markdown-lint strict mode compliant.
 
 ## Dependencies and Relationships
 
