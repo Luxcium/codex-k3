@@ -60,6 +60,106 @@ should_create_prompt() {
     return 1  # Default: don't create
 }
 
+# AI Decision Logic for Prompt Creation (from Pair 06)
+trigger_recognition() {
+    local user_request="$1"
+    
+    # Check for explicit prompt creation triggers
+    if [[ "$user_request" =~ (create|make|generate).*prompt.*file|need.*reusable.*prompt|setup.*prompt.*file ]]; then
+        return 0  # Should create prompt
+    fi
+    
+    # Check for exclusion patterns
+    if [[ "$user_request" =~ direct.*code|immediate.*task|one-time|simple.*explanation ]]; then
+        return 1  # Should NOT create prompt
+    fi
+    
+    return 0  # Default to creating prompt if unclear
+}
+
+# Intent analysis for determining prompt characteristics
+analyze_intent() {
+    local task_description="$1"
+    local intent_analysis=""
+    
+    # Task pattern identification
+    if [[ "$task_description" =~ repeatable|multiple|reusable ]]; then
+        intent_analysis="$intent_analysis repeatable"
+    fi
+    
+    if [[ "$task_description" =~ multi-step|workflow|process ]]; then
+        intent_analysis="$intent_analysis multi-step"
+    fi
+    
+    if [[ "$task_description" =~ transform|refactor|modify ]]; then
+        intent_analysis="$intent_analysis transformative"
+    fi
+    
+    if [[ "$task_description" =~ analysis|review|explain ]]; then
+        intent_analysis="$intent_analysis informational"
+    fi
+    
+    echo "$intent_analysis"
+}
+
+# Determine appropriate mode based on task requirements
+determine_mode() {
+    local task_type="$1"
+    
+    case "$task_type" in
+        *multi-step*|*workflow*|*generation*)
+            echo "agent"
+            ;;
+        *transform*|*refactor*|*modify*)
+            echo "edit"
+            ;;
+        *analysis*|*review*|*informational*)
+            echo "ask"
+            ;;
+        *)
+            echo "agent"  # Default to agent mode
+            ;;
+    esac
+}
+
+# Select tools based on Codex CLI project context
+select_tools() {
+    local technology="$1"
+    local task_type="$2"
+    local tools=""
+    
+    # Base tools for different technologies
+    case "$technology" in
+        *typescript*)
+            tools="codebase filesystem"
+            ;;
+        *python*)
+            tools="codebase filesystem terminal"
+            ;;
+        *nextjs*)
+            tools="codebase filesystem terminal"
+            ;;
+        *shell*|*script*)
+            tools="filesystem terminal"
+            ;;
+        *notebook*)
+            tools="codebase filesystem"
+            ;;
+        *)
+            tools="codebase filesystem"  # Default
+            ;;
+    esac
+    
+    # Add additional tools based on task type
+    if [[ "$task_type" =~ terminal|command|install ]]; then
+        if [[ ! "$tools" =~ terminal ]]; then
+            tools="$tools terminal"
+        fi
+    fi
+    
+    echo "$tools"
+}
+
 # Auto-detect prompt requirements based on project context
 analyze_project_context() {
     local context_info=""

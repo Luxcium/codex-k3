@@ -60,6 +60,12 @@ _List all direct dependencies here. For each, specify:_
 - **Why:** Maintains bidirectional links between AI framework components and project documentation
 - **Impact:** Changes to any referenced file require updates to cross-reference links in all dependent files
 
+### AI Agent Decision Logic
+- **Source**: `.github/instructions/ai-prompt-creation.instructions.md` (decision framework), `scripts/generate-prompt-file.sh` (implementation), Memory bank files (state tracking)
+- **Target**: AI agents
+- **Why**: Enables autonomous AI agents to make intelligent decisions about prompt creation
+- **Impact**: Prevents unnecessary prompt proliferation while ensuring reusable workflows are captured
+
 ---
 
 ## Implicit Dependencies
@@ -91,6 +97,10 @@ _For each file/component/process, list what depends on it and why._
 ### TypeScript and Python Standards
 - **Required By:** All .instructions.md files, code generation workflows, project setup scripts
 - **Why:** Foundational coding standards that ensure consistency across all generated and manual code
+
+### AI Agent Decision Logic
+- **Required By**: AI agents
+- **Why**: Provides the logic and criteria for AI agents to decide on prompt creation versus immediate execution
 
 ---
 
