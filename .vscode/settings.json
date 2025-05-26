@@ -6,8 +6,6 @@
     // Enable Copilot features
     "github.copilot.enable": {
         "*": true,
-        "yaml": false,
-        "plaintext": false,
         "markdown": true
     },
     
