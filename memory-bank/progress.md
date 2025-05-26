@@ -39,6 +39,14 @@ This file tracks what works, what remains to be built, current status, and known
 - Communicate the new standard to all contributors and ensure script-driven enforcement.
 - **Test AI Agent Framework:** Validate prompt files and instruction files in real development scenarios
 - **Create Additional Workflows:** Generate domain-specific prompt files for common development tasks (Vue.js, API development, testing, etc.)
+- **Audit File-Organization Instruction:** Review `file-organization.instructions.md` for self-referential state documentation and ensure front-matter and content align with autonomous self-documentation guidelines
+- **Review Prompt Templates:** Validate all `.prompt.md` files (including `instruction-creation-v2.prompt.md`) for leadership language, autonomy triggers, and self-updating state instructions
+- **Markdown-Lint Audit:** Perform a strict markdown-lint compliance audit across all documentation and scripts
+- **Cross-Reference Compliance Review:** Verify cross-file references and dependencies in `.clinerules/` and `memory-bank/` files for completeness and accuracy
+- **AI Framework Testing:** Conduct real-world tests of the AI Agent Framework workflows, including prompt and instruction generation and state updates
+- **Contributor Communication:** Document and disseminate the new standards, procedures, and scripts to all contributors
+- **Documentation Examples:** Create concrete usage examples showcasing the end-to-end autonomous workflow with AI agents
+- **Finalize Self-Review:** Incorporate this comprehensive stateful review into `progress.md` as the final task before closing this initiative
 - **Documentation Examples:** Create concrete usage examples showing the framework in action with different AI tools
 
 ## Current Status

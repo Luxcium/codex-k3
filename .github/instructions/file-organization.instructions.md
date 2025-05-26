@@ -93,5 +93,18 @@ applyTo: "**"
 - Check for broken links in documentation
 - Ensure consistent naming conventions across project
 - Verify all scripts are idempotent and safe to run
-- Test file organization changes in development environment
-- Maintain markdown-lint compliance for all documentation files
+ - Test file organization changes in development environment
+ - Maintain markdown-lint compliance for all documentation files
+
+## Self-Referential State Documentation
+
+- Agents MUST update `memory-bank/progress.md` when this file is modified, adding timestamped entries for tasks created or completed.
+- Agents MUST record updates in `memory-bank/activeContext.md` to reflect current work focus and next steps.
+- Agents MUST document all dependency additions or changes in `memory-bank/dependencies.md` with explicit rationale ("why") and impact analysis.
+
+## Call to Action
+
+> **AI Agents and Contributors Leadership:**
+> - Autonomously update stateful Memory Bank files upon any change to this instruction file.
+> - Use leadership language to drive accountability and project consistency.
+> - Ensure this instruction file remains up-to-date before executing any tasks governed by file organization standards.
