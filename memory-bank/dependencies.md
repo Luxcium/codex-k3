@@ -36,8 +36,8 @@ _List all direct dependencies here. For each, specify:_
 - **Why:** Provides standardized language and framework organization for consistent project structure
 - **Impact:** Changes to directory structure require updates to setup scripts, documentation, and development workflows
 
-### AI Agent Framework - Prompt Files
-- **Source:** `.github/prompts/*.prompt.md` files
+- ### AI Agent Framework - Prompt Files
+- **Source:** `.github/prompts/*.prompt.md` files (including `instruction-creation.prompt.md`)
 - **Target:** `.github/instructions/*.instructions.md` files, memory-bank/ files
 - **Why:** Prompt files reference instruction files for standards application and memory bank for context
 - **Impact:** Changes to instruction files require prompt file updates; memory bank changes affect prompt contexts

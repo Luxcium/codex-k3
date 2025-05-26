@@ -30,6 +30,7 @@ This file tracks what works, what remains to be built, current status, and known
 - **Enhanced Prompt Generator**: Includes AI decision-making logic for when to create prompts
 - **Context-Aware Templates**: Templates automatically configure based on project type and requirements
 - **Self-Managing System**: AI agents can bootstrap and manage components with minimal human intervention
+- **Python Standards Instruction File**: Production-ready Python coding standards created in `.github/instructions/python-standards.instructions.md`
 
 ## What's Left
 
