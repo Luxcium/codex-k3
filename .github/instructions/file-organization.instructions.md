@@ -19,7 +19,8 @@ applyTo: "**"
 - Place all prompt files in `.github/prompts/` directory
 - Place all instruction files in `.github/instructions/` directory
 - Use kebab-case naming convention for all files
-- Follow pattern: `{domain}-{purpose}.{type}.md`
+- Follow pattern: `{domain}-{purpose}.{type}.md` 
+- Type is one of `prompt` or `instruction`
 - Group related files by domain or feature area
 - Maintain alphabetical ordering within directories
 
