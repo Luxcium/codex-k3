@@ -36,6 +36,30 @@ _List all direct dependencies here. For each, specify:_
 - **Why:** Provides standardized language and framework organization for consistent project structure
 - **Impact:** Changes to directory structure require updates to setup scripts, documentation, and development workflows
 
+### AI Agent Framework - Prompt Files
+- **Source:** `.github/prompts/*.prompt.md` files
+- **Target:** `.github/instructions/*.instructions.md` files, memory-bank/ files
+- **Why:** Prompt files reference instruction files for standards application and memory bank for context
+- **Impact:** Changes to instruction files require prompt file updates; memory bank changes affect prompt contexts
+
+### AI Agent Framework - Instruction Files
+- **Source:** `.github/instructions/*.instructions.md` files
+- **Target:** Project coding standards, TypeScript/Python style guides, memory-bank/dependencies.md
+- **Why:** Instruction files enforce project-wide coding standards and must track their own dependencies
+- **Impact:** Changes to coding standards require instruction file updates and dependency tracking updates
+
+### Parametric Prompt System
+- **Source:** All `.prompt.md` files with `${input:name:default}` syntax
+- **Target:** VS Code Copilot, Cline AI, Codex CLI workflow systems
+- **Why:** Enables reusable, configurable prompt templates for consistent AI-assisted development
+- **Impact:** Changes to parametric syntax require updates across all prompt files and tool integrations
+
+### Cross-Reference System
+- **Source:** All prompt and instruction files
+- **Target:** memory-bank/ files, README.md, related documentation
+- **Why:** Maintains bidirectional links between AI framework components and project documentation
+- **Impact:** Changes to any referenced file require updates to cross-reference links in all dependent files
+
 ---
 
 ## Implicit Dependencies
@@ -47,6 +71,26 @@ _List inferred or indirect dependencies here, with explanations._
 ## Reverse Dependencies
 
 _For each file/component/process, list what depends on it and why._
+
+### README.md
+- **Required By:** Setup scripts, documentation standards, AI agent framework usage guidelines
+- **Why:** Central documentation hub that all project components reference
+
+### .github/instructions/*.instructions.md
+- **Required By:** All .prompt.md files, AI-assisted development workflows, code generation processes
+- **Why:** Provide the coding standards that must be applied during automated code generation
+
+### .github/prompts/*.prompt.md  
+- **Required By:** VS Code Copilot workflows, Cline AI workflows, Codex CLI automation
+- **Why:** Template definitions that enable consistent, reusable AI-assisted development patterns
+
+### memory-bank/dependencies.md
+- **Required By:** All AI framework components, prompt files, instruction files, project documentation
+- **Why:** Central registry that all components must reference and update when creating new dependencies
+
+### TypeScript and Python Standards
+- **Required By:** All .instructions.md files, code generation workflows, project setup scripts
+- **Why:** Foundational coding standards that ensure consistency across all generated and manual code
 
 ---
 

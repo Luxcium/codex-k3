@@ -101,6 +101,41 @@ The `scripts/setup_project.sh` script now includes:
 
 All actions are self-documented and resilient to repeated runs. Review the script for detailed logic and intent.
 
+## AI Agent Framework
+
+This project includes a modular AI agent framework for automated code generation and quality assurance. The framework is organized into two main components:
+
+### Prompt Files (`.github/prompts/`)
+
+Parametric prompt templates for AI-assisted development workflows:
+- **`ai-template-manager.prompt.md`** — Enhanced template generation with parametric inputs
+- **`script-generator.prompt.md`** — Resilient automation script generation
+- **`docker-generator.prompt.md`** — Parameterized Docker configuration generation
+- **`instruction-generator.prompt.md`** — Generate .instructions.md files for coding standards
+- **`template-manager.prompt.md`** — Basic template manager (legacy)
+
+### Instruction Files (`.github/instructions/`)
+
+Coding standards that are automatically applied during AI-assisted development:
+- **`typescript-standards.instructions.md`** — Comprehensive TypeScript coding standards
+- **`python-standards.instructions.md`** — PEP 8 and modern Python practices
+- **`python-notebook-standards.instructions.md`** — Jupyter notebook standards and ML best practices
+- **`file-organization.instructions.md`** — Project structure and file organization rules
+
+### Usage
+
+1. **With VS Code Copilot:** Use `@workspace` commands referencing specific prompt files
+2. **With Cline AI:** Reference instruction files for automatic standards application
+3. **With Codex CLI:** Invoke prompt templates with parametric inputs using `${input:name:default}` syntax
+
+### Framework Features
+
+- **Parametric Inputs:** Use `${input:variableName:defaultValue}` syntax in prompts
+- **Cross-referencing:** Automatic links between prompts, instructions, and memory bank files
+- **Standards Enforcement:** Automatic application of coding standards during generation
+- **Memory Bank Integration:** All components reference and update dependency tracking
+- **Markdown-lint Compliance:** All files follow strict markdown formatting requirements
+
 ---
 
 > This README and all scripts must remain markdown-lint strict mode compliant at all times.
