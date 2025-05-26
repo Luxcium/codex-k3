@@ -33,6 +33,60 @@ log_error() {
     echo -e "${RED}[ERROR]${NC} $1"
 }
 
+# AI Decision Matrix - When to create prompts (from Pair 05 guidelines)
+should_create_prompt() {
+    local task_type="$1"
+    local frequency="$2"
+    local complexity="$3"
+    
+    # Decision logic based on comprehensive guidelines
+    case "$task_type" in
+        "code-generation"|"debugging"|"refactoring"|"testing")
+            if [[ "$frequency" == "high" || "$complexity" == "complex" ]]; then
+                return 0  # Should create prompt
+            fi
+            ;;
+        "documentation"|"deployment"|"architecture")
+            return 0  # Always create for these types
+            ;;
+        "simple-task"|"one-off")
+            if [[ "$complexity" == "complex" ]]; then
+                return 0  # Create only if complex
+            else
+                return 1  # Skip simple one-offs
+            fi
+            ;;
+    esac
+    return 1  # Default: don't create
+}
+
+# Auto-detect prompt requirements based on project context
+analyze_project_context() {
+    local context_info=""
+    
+    # Check for TypeScript files
+    if find . -name "*.ts" -type f | head -1 | grep -q .; then
+        context_info="$context_info typescript"
+    fi
+    
+    # Check for Python files
+    if find . -name "*.py" -type f | head -1 | grep -q .; then
+        context_info="$context_info python"
+    fi
+    
+    # Check for React/Vue components
+    if find . -name "*.vue" -o -name "*.jsx" -o -name "*.tsx" -type f | head -1 | grep -q .; then
+        context_info="$context_info frontend"
+    fi
+    
+    # Check for Docker files
+    if [[ -f "Dockerfile" || -f "docker-compose.yml" ]]; then
+        context_info="$context_info docker"
+    fi
+    
+    echo "$context_info"
+}
+
 # Create prompts directory if it doesn't exist
 ensure_prompts_dir() {
     if [[ ! -d "$PROMPTS_DIR" ]]; then
