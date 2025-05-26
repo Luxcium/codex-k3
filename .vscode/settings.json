@@ -1,40 +1,220 @@
 {
+    // ========================================
+    // GitHub Copilot Core Settings
+    // ========================================
+    
+    // Enable Copilot features
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": false,
+        "plaintext": false,
+        "markdown": true
+    },
+    
+    // ========================================
+    // Instructions and Prompt Files
+    // ========================================
+    
+    // Enable prompt and instruction files (experimental)
+    "chat.promptFiles": true,
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+    
+    // Configure file locations
+    "chat.promptFilesLocations": {
+        ".github/prompts": true
+    },
+    "chat.instructionsFilesLocations": {
+        ".github/instructions": true
+    },
+    
+    // ========================================
+    // Custom Instructions for Different Tasks
+    // ========================================
+    
     // 1. Code generation instructions
     "github.copilot.chat.codeGeneration.instructions": [
         {
             "text": "Use TypeScript and follow the Airbnb style guide for all generated code."
+        },
+        {
+            "text": "Follow strict type checking with proper interfaces and type safety."
+        },
+        {
+            "text": "Reference memory bank files and maintain dependency tracking in dependencies.md."
         }
     ],
+    
     // 2. Test generation instructions
     "github.copilot.chat.testGeneration.instructions": [
         {
-            "text": "Write tests using Jest. Ensure each function has both positive and negative test cases."
+            "text": "Write tests using Jest with TypeScript. Ensure each function has both positive and negative test cases."
+        },
+        {
+            "text": "Include unit tests, integration tests, and edge case coverage."
+        },
+        {
+            "text": "Follow the testing patterns documented in the project's memory bank."
         }
     ],
+    
     // 3. Code review instructions
     "github.copilot.chat.reviewSelection.instructions": [
         {
-            "text": "Check for modularity, code comments, and absence of direct mutations of shared state."
+            "text": "Check for modularity, proper TypeScript types, comprehensive error handling, and code comments."
+        },
+        {
+            "text": "Verify compliance with project coding standards and memory bank guidelines."
+        },
+        {
+            "text": "Ensure no direct mutations of shared state and proper dependency management."
         }
     ],
+    
     // 4. Commit message generation instructions
     "github.copilot.chat.commitMessageGeneration.instructions": [
         {
-            "text": "Follow the Conventional Commits format (e.g., feat: add new login page). Keep messages under 72 characters."
+            "text": "Follow the Conventional Commits format (feat:, fix:, docs:, refactor:, test:, chore:). Keep messages under 72 characters."
+        },
+        {
+            "text": "Reference related issues and pull requests when applicable."
         }
     ],
+    
     // 5. Pull request title and description generation instructions
     "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
         {
-            "text": "Start with a concise summary of the main change. List key updates as bullet points. Reference related issues where possible."
+            "text": "Start with a concise summary. List key changes as bullet points. Reference related issues and include breaking changes if any."
+        },
+        {
+            "text": "Include testing instructions and deployment considerations."
         }
     ],
-    // 6. Code generation from files
-    "github.copilot.chat.codeGeneration.useInstructionFiles": true
-
-    ,"chat.promptFilesLocations":{
-
-        ".github/prompts": true,
-        
-    }, 
+    
+    // ========================================
+    // Agent Mode and Advanced Features
+    // ========================================
+    
+    // Enable agent mode (requires VS Code 1.99+)
+    "chat.agent.enabled": true,
+    "chat.agent.maxRequests": 25,
+    
+    // Agent mode features
+    "github.copilot.chat.agent.autoFix": true,
+    "github.copilot.chat.agent.runTasks": true,
+    "github.copilot.chat.agent.thinkingTool": true,
+    
+    // Enable advanced features
+    "github.copilot.chat.codesearch.enabled": true,
+    "github.copilot.chat.newWorkspaceCreation.enabled": true,
+    
+    // ========================================
+    // Chat and Interaction Settings
+    // ========================================
+    
+    // Chat behavior
+    "github.copilot.chat.useProjectTemplates": true,
+    "github.copilot.chat.scopeSelection": true,
+    
+    // Terminal integration
+    "github.copilot.chat.terminalChatLocation": "terminal",
+    
+    // ========================================
+    // Code Generation and Editing
+    // ========================================
+    
+    // Next Edit Suggestions (Copilot NES)
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "editor.inlineSuggest.edits.allowCodeShifting": "horizontal",
+    "editor.inlineSuggest.edits.renderSideBySide": "auto",
+    
+    // Inline suggestions
+    "editor.inlineSuggest.syntaxHighlightingEnabled": true,
+    
+    // Edit confirmation settings
+    "chat.editing.autoAcceptDelay": 0,
+    
+    // ========================================
+    // Testing and Debugging Integration
+    // ========================================
+    
+    // Testing features
+    "github.copilot.chat.generateTests.codeLens": true,
+    "github.copilot.chat.setupTests.enabled": true,
+    
+    // Debugging features
+    "github.copilot.chat.startDebugging.enabled": true,
+    "github.copilot.chat.copilotDebugCommand.enabled": true,
+    
+    // ========================================
+    // Context and Temporal Features
+    // ========================================
+    
+    // Include recent files as context
+    "github.copilot.chat.edits.temporalContext.enabled": true,
+    "github.copilot.chat.editor.temporalContext.enabled": true,
+    "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": true,
+    
+    // ========================================
+    // UI and UX Settings
+    // ========================================
+    
+    // Command center and UI
+    "chat.commandCenter.enabled": true,
+    "chat.detectParticipant.enabled": true,
+    "chat.sendElementsToChat.enabled": true,
+    
+    // Code actions and suggestions
+    "github.copilot.editor.enableCodeActions": true,
+    "github.copilot.renameSuggestions.triggerAutomatically": true,
+    
+    // ========================================
+    // Chat Appearance
+    // ========================================
+    
+    "chat.editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "chat.editor.fontSize": 14,
+    "chat.editor.fontWeight": "normal",
+    "chat.editor.wordWrap": "on",
+    
+    // ========================================
+    // Experimental and Preview Features
+    // ========================================
+    
+    // Model Context Protocol (MCP) support
+    "chat.mcp.enabled": true,
+    
+    // Experimental features
+    "chat.tools.autoApprove": false,
+    "inlineChat.lineEmptyHint": true,
+    "inlineChat.lineNaturalLanguageHint": true,
+    
+    // Notebook integration
+    "notebook.experimental.generate": true,
+    
+    // ========================================
+    // Accessibility and Voice
+    // ========================================
+    
+    "accessibility.signals.chatRequestSent": {
+        "sound": "auto"
+    },
+    "accessibility.signals.chatResponseReceived": {
+        "sound": "auto"
+    },
+    "accessibility.verbosity.inlineChat": true,
+    "accessibility.verbosity.panelChat": true,
+    
+    // ========================================
+    // Additional VS Code Settings for Copilot
+    // ========================================
+    
+    // General editor settings that enhance Copilot experience
+    "editor.suggestSelection": "first",
+    "editor.tabCompletion": "on",
+    "editor.wordBasedSuggestions": "allDocuments",
+    "editor.quickSuggestions": {
+        "comments": "on",
+        "strings": "on",
+        "other": "on"
+    }
 }
