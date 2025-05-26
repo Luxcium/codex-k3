@@ -33,29 +33,56 @@ I will help you generate well-structured prompt and instruction files for your A
 
 ### Instruction File Template
 
+> **Note:** All instruction files must comply with [instruction-authoring-standards.instructions.md](../instructions/instruction-authoring-standards.instructions.md).
+
 ```markdown
 ---
-applyTo: "${input:glob:**/*.ts}"
+applyTo: "${input:applyTo:Glob pattern for scope (e.g., **/*.ts)}"
 ---
 
-# ${input:title:Coding Standard}
+# ${input:title:Instruction File Title}
 
 ## Purpose
 
-${input:purpose:Define coding standards and conventions for the project}
+${input:purpose:Define the standards, rules, or guidelines for this scope.}
 
-## Guidelines
+## [Major Category 1]
 
-${input:guidelines:- Use consistent naming conventions\n- Follow project architecture patterns\n- Implement comprehensive error handling}
+- Use imperative statements for each rule.
+- Be specific and actionable.
+- Avoid vague or conditional language.
+
+## [Major Category 2]
+
+- Add additional categories as needed.
+- Include both positive and negative rules.
 
 ## Examples
 
-${input:examples:```typescript\n// Example code demonstrating the standard\ninterface ExampleInterface {\n  readonly id: string;\n  name: string;\n}\n```}
+${input:examples:```typescript
+// Example code demonstrating the standard
+interface ExampleInterface {
+  readonly id: string;
+  name: string;
+}
+```}
 
 ## Cross-References
 
+- [Instruction Authoring Standards](../instructions/instruction-authoring-standards.instructions.md)
 - [File Organization Standards](../instructions/file-organization.instructions.md)
 - [Project Dependencies](../../memory-bank/dependencies.md)
+
+## Validation Checklist
+
+- [ ] Front matter includes correct applyTo pattern.
+- [ ] H1 title describes the standards.
+- [ ] H2/H3 headings organize rule categories.
+- [ ] All rules use imperative language.
+- [ ] No vague or subjective terms.
+- [ ] Examples provided for complex rules.
+- [ ] Cross-references included.
+- [ ] Markdown-lint strict mode compliance.
 ```
 
 ### Prompt File Template

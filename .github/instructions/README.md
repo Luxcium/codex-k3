@@ -11,6 +11,9 @@ Instruction files (`.instructions.md`) are automatic guidelines that:
 - Define "HOW" code should be written consistently
 - Never execute tasks - they only influence code generation behavior
 
+> **Authoring Standard:**  
+> Before creating or updating any instruction file, consult [instruction-authoring-standards.instructions.md](./instruction-authoring-standards.instructions.md) for the canonical rules, structure, and validation checklist. All `.instructions.md` files must comply with this standard for consistency and markdown-lint strictness.
+
 ## Available Instructions
 
 ### Language Standards
