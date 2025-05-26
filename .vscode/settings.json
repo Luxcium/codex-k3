@@ -1155,7 +1155,7 @@
   },
   "chat.sendElementsToChat.enabled": true,
   // Experimental features
-  "chat.tools.autoApprove": false,
+  "chat.tools.autoApprove": true,
   "editor.inlineSuggest.edits.allowCodeShifting": "horizontal",
   "editor.inlineSuggest.edits.renderSideBySide": "auto",
   // Inline suggestions
