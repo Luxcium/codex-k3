@@ -13,7 +13,7 @@ All operational rules and protocols are maintained in the modular files under `.
 3. The following structure must exist at the project root:
     - `.github/` (directory)
     - `.vscode/` (directory)
-    - `memory-bank/` (empty directory)
+    - `memory-bank/` (directory)
     - `.gitignore` (file)
     - `.clinerules` (file)
     - `README.md` (file)
