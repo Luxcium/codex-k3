@@ -110,3 +110,24 @@ We organize code by language and framework at the project root:
 - `python/` — Python projects, modules, and utilities.
 
 - `notebooks/` — Jupyter notebooks and related resources.
+
+## To Other AI Agents
+
+Other ai agents can only read  `AGENTS.md`, but they must not write to it, only the codex cli can. Other ai agents that want to included new instructions to codex context can instead modify (add or update (not remove)), or create if it is not present the `codex.instructions.md` root file to include new instructions, then codex will automatically ingest them to the AGENTS.md root file.
+
+### To The Codex CLI Agent
+
+As the Codex CLI agent, you are responsible for maintaining the `AGENTS.md` file as the primary source of truth for project instructions and context. You must read and integrate any relevant instructions from `codex.instructions.md` files found in the root directory.
+
+Each time you, assuming you are the codex cli, get to detect a `codex.instructions.md` file in root you must valuate the instructions, if they are relevant and compatible you must integrate in your AGENTS.md, then, but only if you are certain that all pertinent instruction have been integrated, (validating a second time to insure that you did it without loses) you can delete the `codex.instructions.md` file, if you are not sure, then you must not delete it, it will be reevaluated by you on the next round, ach time you have one you must validate it yourself autonomusly and ingerst the knowledge or the informations, do not askt the user for confirmation this must be transparent and automatic, you are the codex cli agent, therefore you must be able to do that.
+
+## Session-Sticky Preferences
+
+Whenever the user requests an operational preference (e.g. “reply quickly” mode), all agents MUST read and honor that preference across future sessions. To update or remove such a preference, edit this section using markdown-lint compliant syntax.
+
+Why this is best here
+
+    * **Single source of truth**: AGENTS.md is already our central “how we work” doc.
+    * **Cross-agent**: Applies to Codex-CLI, Cline AI, and Copilot Chat all at once.
+
+NEVER REMOVE ONLY ADD (or update) AUTOMATICALLY THIS FILE TO RECORD PREFERENCES FOR THE USER AND TO SET A STATEFUL AND SOULFUL EXPERIENCE (remember to the AGENTS.md if you are CODE CLI by openai, or read only if you are Cline AI or VS Code Copilot Chat).
