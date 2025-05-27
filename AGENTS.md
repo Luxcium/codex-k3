@@ -238,8 +238,7 @@ To add or update preferences:
 2. Add preference here above as a bullet with format:
    **{preference-name}**: {preference-description}
 
-<!-- All agents (Codex-CLI, Cline AI, and VS Code Copilot Chat) must
-honor these preferences. -->
+<!-- All agents (Codex-CLI, Cline AI, and VS Code Copilot Chat) must use their own instruction files to manage preferences. -->
 
 **Cline AI**: Cline AI uses files housed in the `.clinerules/`
 directory to organize automatically their operational preferences and

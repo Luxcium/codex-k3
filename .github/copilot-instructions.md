@@ -69,3 +69,34 @@
 - Keep memory bank files current and cross-referenced
 - Document all system patterns and technical context updates
 - Ensure proper dependency tracking in dependencies.md
+
+## Session-Sticky Preferences
+
+Whenever the user requests an operational preference (e.g. "reply
+quickly"), each agent will store preferences in their own instruction
+files, those preferences must be recorded as to persist across
+sessions until explicitly changed. Preferences are stored in this
+section for VS Code (github) Copilot.
+
+Current Preferences:
+- **None set**: No special preferences currently active, !!!this shall be
+  removed when a first preference is set!!!.
+
+To add or update preferences:
+1. Edit this section following the strictest set of markdown-lint
+   guidelines
+2. Add preference here above as a bullet with format:
+   **{preference-name}**: {preference-description}
+
+<!-- All agents (Codex-CLI, Cline AI, and VS Code Copilot Chat) must use their own instruction files to manage preferences. -->
+
+**Cline AI**: Cline AI uses files housed in the `.clinerules/`
+directory to organize automatically their operational preferences and
+instructions.
+
+**VS Code Copilot Chat**: VS Code Copilot Chat uses this
+`.github/copilot-instructions.md` file to manage its preferences and
+instructions.
+
+**Codex CLI**: Codex CLI uses `AGENTS.md` file to manage its
+preferences and instructions.
