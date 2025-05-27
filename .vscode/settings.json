@@ -1,6 +1,10 @@
 {
-    "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+  "typescript.tsserver.maxTsServerMemory": 8192,
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.localEchoLatencyThreshold": 30,
+
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
     "diffEditor.ignoreTrimWhitespace": true,
@@ -62,13 +66,15 @@
   // ―― CODEACTIONSONSAVE BEHAVIOUR:
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "explicit",
-    "source.autoFix": "explicit",
+    "source.autoFix": "always",
     // "source.sort.json": "always",
     "source.fixAll": "always",
     "source.fixAll.eslint": "explicit",
-    "source.fixAll.prettier": "explicit",
+    "source.fixAll.prettier": "always",
     "source.organizeImports": "explicit",
-    "source.sortImports": "always"
+    "source.sortImports": "always",
+
+    "source.fixAll.ts": "explicit"
   },
   "editor.inlineSuggest.showToolbar": "always",
   "editor.minimap.renderCharacters": false,
@@ -99,11 +105,7 @@
   "mcp": {
     "servers": {
       "console-ninja": {
-        "args": [
-          "-y",
-          "-c",
-          "node ~/.console-ninja/mcp/"
-        ],
+        "args": ["-y", "-c", "node ~/.console-ninja/mcp/"],
         "command": "npx"
       }
     }
@@ -121,12 +123,12 @@
   "workbench.colorTheme": "Pop N' Lock Theme by Luxcium ✨ Alexis's Black ⛷",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.productIconTheme": "bootstrap-product-icons",
-  "workbench.secondarySideBar.showLabels": false
+  "workbench.secondarySideBar.showLabels": false,
   /*
   |-····-----------------------------------------------------------――··-|
     */
   // #region: editor.rulers [scminput]                                       !
-  ,"[scminput]": {
+  "[scminput]": {
     "editor.rulers": [
       {
         "color": "#F368",
@@ -135,7 +137,7 @@
       {
         "color": "#F838",
         "column": 50
-      },
+      }
     ],
     "editor.wordWrap": "on",
     "editor.wordWrapColumn": 70
@@ -1421,9 +1423,7 @@
   |-····-----------------------------------------------------------··-|
     */
   // #region: TODO TREE                                                                !
-  "todo-tree.filtering.excludeGlobs": [
-    "**/node_modules"
-  ],
+  "todo-tree.filtering.excludeGlobs": ["**/node_modules"],
   "todo-tree.filtering.ignoreGitSubmodules": false,
   "todo-tree.filtering.includedWorkspaces": [], // new items
   "todo-tree.filtering.includeGlobs": [], // new items
