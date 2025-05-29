@@ -157,7 +157,7 @@ use their own instruction files to manage preferences. -->
 directory to organize automatically their operational preferences and
 instructions.
 
-**VS Code Copilot Chat**: VS Code Copilot Chat uses this
+**VS Code Copilot Chat**: VS Code Copilot Chat uses
 `.github/copilot-instructions.md` file to manage its preferences and
 instructions.
 
