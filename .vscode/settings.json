@@ -1,5 +1,7 @@
 {
-
+ "terminal.integrated.env.linux": {
+        "CODEX_HOME": "${workspaceFolder}/.codex"
+    },
     // Ensure instruction files are also enabled (they work together)
   "github.copilot.chat.codeGeneration.useInstructionFiles": true,
   
@@ -135,7 +137,7 @@
     "GitHub.copilot-chat",
     "GitHub.vscode-pull-request-github"
   ],
-  "terminal.integrated.env.linux": {},
+  // "terminal.integrated.env.linux": {},
   "typescript.updateImportsOnFileMove.enabled": "always",
   "workbench.colorTheme": "Pop N' Lock Theme by Luxcium ✨ Alexis's Black ⛷",
   "workbench.iconTheme": "material-icon-theme",
