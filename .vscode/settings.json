@@ -1,4 +1,21 @@
 {
+
+    // Ensure instruction files are also enabled (they work together)
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  
+  // Add instructions file locations to work alongside prompts
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true
+  },
+  
+  // Ensure prompt files are explicitly enabled
+  "chat.promptFiles": true,
+  
+  // Your existing prompt location is correct
+  "chat.promptFilesLocations": {
+    ".github/prompts": true
+  }
+  ,
   "typescript.tsserver.maxTsServerMemory": 8192,
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.localEchoLatencyThreshold": 30,
@@ -1138,9 +1155,7 @@
   "chat.editor.fontSize": 14,
   "chat.editor.fontWeight": "normal",
   "chat.editor.wordWrap": "on",
-  "chat.instructionsFilesLocations": {
-    ".github/instructions": true
-  },
+ 
   // ========================================
   // Experimental and Preview Features
   // ========================================
@@ -1149,12 +1164,7 @@
   // ========================================
   // Instructions and Prompt Files
   // ========================================
-  // Enable prompt and instruction files (experimental)
-  "chat.promptFiles": true,
-  // Configure file locations
-  "chat.promptFilesLocations": {
-    ".github/prompts": true
-  },
+ 
   "chat.sendElementsToChat.enabled": true,
   // Experimental features
   "chat.tools.autoApprove": true,
@@ -1309,7 +1319,6 @@
       "text": "Reference memory bank files and maintain dependency tracking in dependencies.md."
     }
   ],
-  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
   // Enable advanced features
   "github.copilot.chat.codesearch.enabled": true,
   // 4. Commit message generation instructions
