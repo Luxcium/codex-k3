@@ -44,6 +44,13 @@ This Memory Bank is initialized to provide a replicable, self-explanatory docume
 > **Do not proceed with project-specific work until this file is reviewed and aligned with the current project context.**  
 > **Update this file immediately upon any change in project scope or requirements.**
 
+## AI Agent Instructions
+
+This project supports three AI agents with specific entry points:
+- **Cline AI** → `.clinerules/main-rules.md` (Cline AI's primary instruction file)
+- **Codex CLI** → `AGENTS.md` (Codex CLI's primary instruction file)
+- **VS Code Copilot** → `.github/copilot-instructions.md` (VS Code Copilot's primary instruction file)
+
 **See [.clinerules/reading-protocol.md](../.clinerules/reading-protocol.md), [.clinerules/writing-protocol.md](../.clinerules/writing-protocol.md), and [.clinerules/verification.md](../.clinerules/verification.md) for required protocols.**
 
 ---

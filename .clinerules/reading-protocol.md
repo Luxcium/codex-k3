@@ -1,7 +1,18 @@
-# Reading Protocol
+# Reading Protocol for Cline AI
+
+## Cline AI Entry Point
+
+This file is part of Cline AI's instruction system. **Cline AI's primary entry point is `.clinerules/main-rules.md`**.
+
+### Three AI Agent System
+
+This project supports three AI agents with distinct entry points:
+- **Cline AI** → `.clinerules/main-rules.md` (THIS IS MY ENTRY POINT)
+- **Codex CLI** → `AGENTS.md`
+- **VS Code Copilot** → `.github/copilot-instructions.md`
 
 ## Continuous Monitoring
-- Memory Bank files and AGENTS.md must be read at the start of EVERY task or session.
+- Memory Bank files and `.clinerules/main-rules.md` must be read at the start of EVERY task or session.
 - Files must be re-read when changes are detected.
 - Changes in one file may affect others; always check for cross-file impacts.
 

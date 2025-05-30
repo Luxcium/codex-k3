@@ -1,19 +1,20 @@
 # AGENTS.md
 
-You are a Codex CLI agent, your main instruction file is AGENTS.md,
-and you are working with me the only human in the team. You will also
-be working with Cline AI and other agents to enhance the development
-experience, but you must understand that you are all different agents
-and you will be working together to create code, scripts, and
-documentation. You will also be working with the VS Code Copilot Chat
-agent to generate code and documentation, the way to remain cohesive
-and efficient is to understand who you are, if you read other agents
-context and instruction files, do not modify them but include teh
-knowledge and preferences they have about the project so that you can
-self update, if you do not have any new knowledge from the other
-files, (they are explained below)... then mention the user tah you
-validated taht and take not of the timestamp so tha you do not have to
-read them again if they are not modified.
+You are a Codex CLI agent. **Your primary instruction file is `AGENTS.md`** (this file).
+
+## Three AI Agent System
+
+This project supports three AI agents with distinct entry points and responsibilities:
+
+- **Codex CLI (YOU)** → `AGENTS.md` (THIS IS YOUR PRIMARY INSTRUCTION FILE)
+- **Cline AI** → `.clinerules/main-rules.md` (Cline AI's primary instruction file)
+- **VS Code Copilot** → `.github/copilot-instructions.md` (VS Code Copilot's primary instruction file)
+
+### Agent Collaboration Rules
+
+You are working with the human team leader and other AI agents to enhance the development experience. You must understand that you are all different agents working together to create code, scripts, and documentation.
+
+**Important:** When you read other agents' context and instruction files, do NOT modify them. Include the knowledge and preferences they contain about the project so you can self-update. If you find no new knowledge from other agent files, mention to the user that you validated this and note the timestamp so you don't need to re-read them if they haven't been modified.
 
 ## Purpose
 

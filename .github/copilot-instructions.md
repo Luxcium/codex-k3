@@ -1,3 +1,14 @@
+# VS Code Copilot Instructions
+
+This file is **VS Code Copilot's primary instruction file and entry point**.
+
+## Three AI Agent System
+
+This project supports three AI agents with distinct entry points:
+- **VS Code Copilot (YOU)** → `.github/copilot-instructions.md` (THIS IS YOUR ENTRY POINT)
+- **Cline AI** → `.clinerules/main-rules.md` (Cline AI's primary instruction file)
+- **Codex CLI** → `AGENTS.md` (Codex CLI's primary instruction file)
+
 # Project-Wide Guidelines for Codex CLI
 
 ## General Coding Standards

@@ -49,6 +49,13 @@ Documenting and enforcing the code organization standard across the Memory Bank 
 > **Do not proceed with new work or changes until this file accurately reflects the current state and priorities.**  
 > **Update this file immediately upon any change in work focus, plans, or decisions.**
 
+## AI Agent Instructions
+
+This project supports three AI agents with specific entry points:
+- **Cline AI** → `.clinerules/main-rules.md` (Cline AI's primary instruction file)
+- **Codex CLI** → `AGENTS.md` (Codex CLI's primary instruction file)
+- **VS Code Copilot** → `.github/copilot-instructions.md` (VS Code Copilot's primary instruction file)
+
 **See [.clinerules/process-evolution.md](../.clinerules/process-evolution.md), [.clinerules/verification.md](../.clinerules/verification.md), and [.clinerules/learning-journal.md](../.clinerules/learning-journal.md) for required protocols and self-regulation guidance.**
 
 ---

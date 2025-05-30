@@ -1,8 +1,23 @@
 # Project Setup Rules and Instructions
 
+## AI Agent Entry Points
+
+This project supports three AI agents, each with their own entry point and instruction files:
+
+- **Cline AI** → `.clinerules/main-rules.md` (primary entry point for Cline AI)
+- **Codex CLI** → `AGENTS.md` (primary entry point for Codex CLI)
+- **VS Code Copilot** → `.github/copilot-instructions.md` (primary entry point for VS Code Copilot)
+
+### Agent-Specific Instructions
+
+- **`.clinerules/`** directory contains Cline AI's personal instruction files and operational rules
+- **`memory-bank/`** directory contains project-wide documentation shared by all agents
+- **`AGENTS.md`** is Codex CLI's personal instruction and context file
+- **`.github/copilot-instructions.md`** contain VS Code Copilot's instruction files
+
 ## Rules and Protocols
 
-All operational rules and protocols are maintained in the modular files under `.clinerules/`. All agents and contributors must read and follow these files at the start of every session and before any planning or implementation.
+All operational rules and protocols are maintained in the modular files under `.clinerules/` (for Cline AI) and project-wide documentation in `memory-bank/`. All agents and contributors must read and follow their respective instruction files at the start of every session and before any planning or implementation.
 
 > **All project setup and file/folder creation must be performed via scripts, never manually.**
 

@@ -31,6 +31,12 @@ This file tracks what works, what remains to be built, current status, and known
 - **Context-Aware Templates**: Templates automatically configure based on project type and requirements
 - **Self-Managing System**: AI agents can bootstrap and manage components with minimal human intervention
 - **Python Standards Instruction File**: Production-ready Python coding standards created in `.github/instructions/python-standards.instructions.md`
+- **AI Agent Entry Point Disambiguation**: Clear establishment of three AI agent entry points across all documentation
+  - Cline AI entry point: `.clinerules/main-rules.md`
+  - Codex CLI entry point: `AGENTS.md`
+  - VS Code Copilot entry point: `.github/copilot-instructions.md`
+  - Updated README.md, Memory Bank files, and all agent instruction files to reference the three-agent system
+  - Each agent now clearly understands its primary instruction file and collaboration boundaries
 
 ## What's Left
 
@@ -79,6 +85,13 @@ This file tracks what works, what remains to be built, current status, and known
 > **All agents and contributors must review, update, and self-regulate this file as progress is made.**  
 > **Do not proceed with new work or mark tasks as complete until this file accurately reflects the current project status.**  
 > **Update this file immediately upon any change in progress, status, or known issues.**
+
+## AI Agent Instructions
+
+This project supports three AI agents with specific entry points:
+- **Cline AI** → `.clinerules/main-rules.md` (Cline AI's primary instruction file)
+- **Codex CLI** → `AGENTS.md` (Codex CLI's primary instruction file)
+- **VS Code Copilot** → `.github/copilot-instructions.md` (VS Code Copilot's primary instruction file)
 
 **See [.clinerules/process-evolution.md](../.clinerules/process-evolution.md), [.clinerules/verification.md](../.clinerules/verification.md), and [.clinerules/learning-journal.md](../.clinerules/learning-journal.md) for required protocols and self-regulation guidance.**
 
