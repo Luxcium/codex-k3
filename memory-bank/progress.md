@@ -54,6 +54,8 @@ This file tracks what works, what remains to be built, current status, and known
 - **Documentation Examples:** Create concrete usage examples showcasing the end-to-end autonomous workflow with AI agents
 - **Finalize Self-Review:** Incorporate this comprehensive stateful review into `progress.md` as the final task before closing this initiative
 - **Documentation Examples:** Create concrete usage examples showing the framework in action with different AI tools
+- ✅ **Updated Prompts README:** Comprehensive update to `.github/prompts/README.md` reflecting all 13 prompt files with proper categorization and cross-references
+- ✅ **Updated Instructions README:** Comprehensive update to `.github/instructions/README.md` reflecting all 10 instruction files with logical grouping and enhanced cross-references
 
 ## Current Status
 

@@ -16,10 +16,24 @@ Prompt files (`.prompt.md`) are executable templates that:
 - **[template-manager.prompt.md](./template-manager.prompt.md)** - Master template manager for intelligent prompt and instruction file creation
 - **[ai-template-manager.prompt.md](./ai-template-manager.prompt.md)** - Enhanced template manager with comprehensive guidelines
 - **[instruction-generator.prompt.md](./instruction-generator.prompt.md)** - Generate .instructions.md files with proper structure
+- **[instruction-creation.prompt.md](./instruction-creation.prompt.md)** - Create instruction files following project standards
+- **[instruction-creation-v2.prompt.md](./instruction-creation-v2.prompt.md)** - Enhanced instruction file creation with improved structure
+
+### Documentation & Memory Bank
+- **[memory-bank-update.prompt.md](./memory-bank-update.prompt.md)** - Update memory bank documentation with proper cross-references
+- **[dependency-management.prompt.md](./dependency-management.prompt.md)** - Track and update project dependencies with proper documentation
+- **[self-documentation.prompt.md](./self-documentation.prompt.md)** - Execute and append self-documentation entries following the Self-Documentation Protocol
 
 ### Project Automation
 - **[script-generator.prompt.md](./script-generator.prompt.md)** - Create resilient, reusable automation scripts
 - **[docker-generator.prompt.md](./docker-generator.prompt.md)** - Generate parameterized Docker configurations
+
+### Development Components
+- **[typescript-component.prompt.md](./typescript-component.prompt.md)** - Generate TypeScript components following project standards
+- **[vit-implementation.prompt.md](./vit-implementation.prompt.md)** - Generate a Vision Transformer (ViT) implementation with detailed documentation
+
+### Testing & Validation
+- **[test-prompt.prompt.md](./test-prompt.prompt.md)** - Test prompt to verify prompt files are working correctly
 
 ## How to Use Prompts
 
@@ -100,6 +114,8 @@ Prompts support these variable types:
 - [File Organization Standards](../instructions/file-organization.instructions.md)
 - [TypeScript Standards](../instructions/typescript-standards.instructions.md)
 - [Python Standards](../instructions/python-standards.instructions.md)
+- [Self-Documentation Protocol](../instructions/self-documentation.instructions.md)
+- [Instruction Authoring Standards](../instructions/instruction-authoring-standards.instructions.md)
 
 ### Memory Bank Integration
 - Update [dependencies.md](../../memory-bank/dependencies.md) when adding prompt dependencies

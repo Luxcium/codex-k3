@@ -24,6 +24,17 @@ Instruction files (`.instructions.md`) are automatic guidelines that:
 ### Project Organization
 - **[file-organization.instructions.md](./file-organization.instructions.md)** - File and directory organization standards
 
+### AI Agent Workflow
+- **[ai-instruction-creation.instructions.md](./ai-instruction-creation.instructions.md)** - Guidelines for AI agents creating .instructions.md files on-demand
+- **[ai-prompt-creation.instructions.md](./ai-prompt-creation.instructions.md)** - Guidelines for AI agents creating .prompt.md files on-demand
+
+### Documentation & Standards
+- **[instruction-authoring-standards.instructions.md](./instruction-authoring-standards.instructions.md)** - Canonical rules and structure for creating instruction files
+- **[self-documentation.instructions.md](./self-documentation.instructions.md)** - Self-documentation protocol for tracking actions and context changes
+
+### Code Quality
+- **[no_dummy-no_placeholders.instruction.md](./no_dummy-no_placeholders.instruction.md)** - Ensure all generated code uses real values instead of placeholders
+
 ## How Instructions Work
 
 ### Automatic Application
@@ -32,6 +43,7 @@ Instructions are automatically applied based on their `applyTo` patterns:
 - `**/*.ts` - Applies only to TypeScript files
 - `**/src/**` - Applies only to files in src directory
 - `**/*.{test,spec}.*` - Applies only to test files
+- `ai-agents` - Special pattern for AI agent behavior
 
 ### Background Operation
 - Instructions are invisible during prompt composition
@@ -72,6 +84,7 @@ Common `applyTo` patterns:
 | `**/*.{ext}` | Language-specific | TypeScript, Python rules |
 | `**/folder/**` | Directory-specific | API, component standards |
 | `**/*.{test,spec}.*` | Test files | Testing guidelines |
+| `ai-agents` | AI agent behavior | Workflow and creation guidelines |
 
 ## Best Practices
 
@@ -145,11 +158,25 @@ applyTo: "**/api/**"
 - Include proper HTTP status codes in responses
 ```
 
+### AI Agent Behavior
+```markdown
+---
+applyTo: "ai-agents"
+---
+# AI Agent Instructions
+- Create instruction files only when user explicitly requests standards
+- Use imperative language for all rules
+- Include proper cross-references to related files
+```
+
 ## Cross-References
 
 ### Related Prompts
 - [Instruction Generator](../prompts/instruction-generator.prompt.md) - Create new instruction files
 - [Template Manager](../prompts/template-manager.prompt.md) - Manage instruction file lifecycle
+- [AI Template Manager](../prompts/ai-template-manager.prompt.md) - Enhanced template management
+- [Instruction Creation](../prompts/instruction-creation.prompt.md) - Create instruction files following project standards
+- [Instruction Creation V2](../prompts/instruction-creation-v2.prompt.md) - Enhanced instruction file creation
 
 ### Memory Bank Integration
 - Update [dependencies.md](../../memory-bank/dependencies.md) when adding instruction dependencies

@@ -14,20 +14,28 @@ This file tracks the current work focus, recent changes, next steps, and active 
 
 ## Current Work Focus
 
-Documenting and enforcing the code organization standard across the Memory Bank and project documentation. Ensuring all references, rationale, and compliance steps are clearly recorded and cross-referenced.
+Completed comprehensive documentation updates for both `.github/prompts/README.md` and `.github/instructions/README.md`, ensuring both directories have accurate, complete documentation reflecting all files and their purposes within the AI Agent Framework.
 
 ## Recent Changes
 
-- Added project root code organization standard to systemPatterns.md (Architecture Overview, Key Technical Decisions).
-- Updated techContext.md (Development Setup, Technical Constraints) to reference and enforce the standard.
-- Began propagation of the standard to all relevant documentation and compliance sections.
+- **Prompts Documentation**: Updated `.github/prompts/README.md` to include all 13 prompt files with proper categorization
+- **Instructions Documentation**: Updated `.github/instructions/README.md` to include all 10 instruction files with logical grouping:
+  - Language Standards: typescript-standards, python-standards, python-notebook-standards
+  - Project Organization: file-organization
+  - AI Agent Workflow: ai-instruction-creation, ai-prompt-creation
+  - Documentation & Standards: instruction-authoring-standards, self-documentation
+  - Code Quality: no_dummy-no_placeholders
+- Enhanced cross-references between prompts and instructions directories
+- Added special `ai-agents` pattern documentation for AI agent behavior modification
+- Improved documentation structure for complete AI Agent Framework coverage
 
 ## Next Steps
 
-- Update progress.md to track this documentation update as an outstanding and then completed task.
-- Review all Memory Bank and .clinerules files for cross-reference and compliance.
-- Verify markdown-lint compliance for all updated documentation.
-- Communicate the new standard to all contributors and ensure script-driven enforcement.
+- Update progress.md to track both README.md updates as completed
+- Continue reviewing all Memory Bank and .clinerules files for cross-reference and compliance
+- Verify markdown-lint compliance for all updated documentation
+- Test both updated documentation sets to ensure all cross-references work correctly
+- Monitor for any additional prompt or instruction files that may be added to maintain comprehensive coverage
 
 ## Active Decisions
 
