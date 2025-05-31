@@ -14,28 +14,30 @@ This file tracks the current work focus, recent changes, next steps, and active 
 
 ## Current Work Focus
 
-Completed comprehensive documentation updates for both `.github/prompts/README.md` and `.github/instructions/README.md`, ensuring both directories have accurate, complete documentation reflecting all files and their purposes within the AI Agent Framework.
+Understanding and documenting AI Agent Framework prompt file protocol for creating conditional prompt files that GitHub Copilot can execute based on user-provided context.
 
 ## Recent Changes
 
-- **Prompts Documentation**: Updated `.github/prompts/README.md` to include all 13 prompt files with proper categorization
-- **Instructions Documentation**: Updated `.github/instructions/README.md` to include all 10 instruction files with logical grouping:
-  - Language Standards: typescript-standards, python-standards, python-notebook-standards
-  - Project Organization: file-organization
-  - AI Agent Workflow: ai-instruction-creation, ai-prompt-creation
-  - Documentation & Standards: instruction-authoring-standards, self-documentation
-  - Code Quality: no_dummy-no_placeholders
-- Enhanced cross-references between prompts and instructions directories
-- Added special `ai-agents` pattern documentation for AI agent behavior modification
-- Improved documentation structure for complete AI Agent Framework coverage
+- **Comprehensive System Analysis**: Analyzed the complete AI Agent Framework including:
+  - Memory Bank system and cross-referencing protocols
+  - Script-driven file creation via `scripts/generate-prompt-file.sh`
+  - Instruction files system (`.github/instructions/`) for passive coding standards
+  - Prompt files system (`.github/prompts/`) for executable workflows
+- **Protocol Documentation**: Documented the distinction between:
+  - **Instructions** - Passive, automatic application via `applyTo` patterns
+  - **Prompts** - Active, manual execution via `/promptname` commands
+- **Conditional Execution Capabilities**: Identified GitHub Copilot's conditional execution mechanisms:
+  - `applyTo` patterns for instructions (`**/*.ts`, `**/src/**`, `ai-agents`, etc.)
+  - Variable system for prompts (`${workspaceFolder}`, `${file}`, `${selection}`, `${input:name:default}`)
+  - Context-aware workflow design possibilities
 
 ## Next Steps
 
-- Update progress.md to track both README.md updates as completed
-- Continue reviewing all Memory Bank and .clinerules files for cross-reference and compliance
-- Verify markdown-lint compliance for all updated documentation
-- Test both updated documentation sets to ensure all cross-references work correctly
-- Monitor for any additional prompt or instruction files that may be added to maintain comprehensive coverage
+- Create conditional prompt files that GitHub Copilot can execute based on user-provided external context
+- Design prompts with intelligent context detection and conditional logic
+- Integrate with existing Memory Bank and instruction file systems
+- Implement script-driven creation following established protocols
+- Document new prompt file patterns and cross-references
 
 ## Active Decisions
 
@@ -43,13 +45,14 @@ Completed comprehensive documentation updates for both `.github/prompts/README.m
 - All setup and file/folder creation must be performed via scripts in the `scripts/` directory, never manually.
 - Scripts must be idempotent, must not overwrite existing files, and must warn or skip if files/folders exist.
 - All documentation and scripts must be markdown-lint strict mode compliant.
+- **New**: Prompt files for conditional execution must leverage GitHub Copilot's `applyTo` patterns and variable system for context-aware behavior.
 
 ## Dependencies and Relationships
 
-- **Depends On:** _[List upstream dependencies, e.g., techContext.md, systemPatterns.md, etc.]_
-- **Required By:** _[List downstream dependencies, e.g., progress.md, etc.]_
-- **Why This Order:** _[Explain why activeContext.md must be established before progress tracking]_
-- **Impact Analysis:** _[Describe what happens if this file is not kept up to date or if dependencies change]_
+- **Depends On:** techContext.md, systemPatterns.md, projectbrief.md
+- **Required By:** progress.md, all prompt and instruction file creation
+- **Why This Order:** activeContext.md must reflect current AI Agent Framework understanding before implementing new conditional prompt patterns
+- **Impact Analysis:** Changes to prompt file protocols affect all AI agents (Cline AI, Codex CLI, VS Code Copilot) and their collaborative workflows
 
 ## Call to Action
 
