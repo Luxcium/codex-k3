@@ -189,7 +189,7 @@ applyTo: "glob-pattern-here"
 
 - Link to related instruction files using relative paths.
 - Use descriptive link text that explains the relationship.
-- Format links as: `[description](../prompts/related.instructions.md)`.
+- Format links as (example): `[description](../prompts/instruction-creation.prompt.md)`.
 - Always verify link targets exist or will be created.
 
 ### External Reference Guidelines
