@@ -62,6 +62,10 @@ This file tracks all project dependencies, their relationships, and integration 
   - **Depends On**: `memory-bank/docker-workflow.md`, instruction files
   - **Required By**: Container setup workflows, multi-environment deployments
   - **Integration**: Four-phase Docker workflow, exotic pattern implementation
+- **docker-consolidated-template.prompt.md**: Consolidated Docker workflow template
+  - **Depends On**: Validated four-phase approach, security best practices
+  - **Required By**: Standardized Docker implementations across all AI agents
+  - **Integration**: Simplified template following consolidated recommendations from external agent evaluation
 
 ### Instruction Files (`.github/instructions/`)
 - **typescript-standards.instructions.md**: TypeScript coding standards
