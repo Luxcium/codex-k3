@@ -66,6 +66,10 @@ This file tracks all project dependencies, their relationships, and integration 
   - **Depends On**: Validated four-phase approach, security best practices
   - **Required By**: Standardized Docker implementations across all AI agents
   - **Integration**: Simplified template following consolidated recommendations from external agent evaluation
+- **docker-modular-workflow.prompt.md**: Modular Docker build/run workflow generator
+  - **Depends On**: Modular development patterns, volume mounting strategies
+  - **Required By**: Development workflows requiring build/run separation
+  - **Integration**: Volume-first development, CLI parameterization, multi-service orchestration
 
 ### Instruction Files (`.github/instructions/`)
 - **typescript-standards.instructions.md**: TypeScript coding standards
