@@ -1,3 +1,4 @@
+- [2025-06-02T12:35:00Z] Task: Python environment setup (local, Docker, volume, isolation) completed; All scripts, Dockerfile, compose, and documentation created per standards. See .github/instructions/python-environment.instructions.md for rules. Note: Executing Self-Documentation Protocol. This entry reaffirms that all actions and context changes must be documented and that this rule itself is part of the ongoing protocol.
 # progress.md
 
 ## Purpose

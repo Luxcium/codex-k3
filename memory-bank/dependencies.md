@@ -1,3 +1,4 @@
+- [2025-06-02T12:35:00Z] Added: pip, Docker, docker-compose as Python environment dependencies. Why: Required for flexible local and containerized Python workflows. Impact: Enables all contributors to use either local venv or Docker-based development, supporting both isolated and volume-attached modes. See .github/instructions/python-environment.instructions.md for rationale and standards.
 # dependencies.md
 
 ## Purpose
