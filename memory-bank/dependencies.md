@@ -1,4 +1,4 @@
-- [2025-06-02T12:35:00Z] Added: pip, Docker, docker-compose as Python environment dependencies. Why: Required for flexible local and containerized Python workflows. Impact: Enables all contributors to use either local venv or Docker-based development, supporting both isolated and volume-attached modes. See .github/instructions/python-environment.instructions.md for rationale and standards.
+- [2025-02-06T22:18:00Z] Updated: Conditional Python environment framework dependencies. Added: ENV_MODE parameter system, mode-specific scripts (local, docker_isolated, docker_volume), conditional instruction files. Why: Replaced hard-coded Python setup with flexible, runtime-determined environment selection. Impact: Enables truly deferred decision-making for Python environments without upfront implementation choices. See .github/instructions/python-environment-conditional.instructions.md for complete conditional framework.
 # dependencies.md
 
 ## Purpose
@@ -15,10 +15,22 @@ This file tracks all project dependencies, their relationships, and integration 
 
 ## Core Dependencies
 
+### Conditional Python Environment Framework
+- **Python 3.11+**: Core language runtime (for local mode)
+- **pip**: Package management for all Python modes
+- **virtualenv**: Local virtual environment creation (local mode)
+- **Docker Engine**: Container runtime (docker_isolated, docker_volume modes)
+- **Docker Compose**: Multi-container orchestration (docker_volume mode, optional)
+- **Parameter System**: ENV_MODE runtime decision framework
+  - `local` - Host-based virtual environment
+  - `docker_isolated` - Fully containerized with no host dependencies
+  - `docker_volume` - Containerized with live host file mounting
+
 ### Docker and Containerization
 - **Docker Engine**: Container runtime and management
 - **Docker Compose**: Multi-container orchestration
 - **Container Images**: Base images for development and production
+  - `python:3.11-slim` - Minimal Python runtime for Docker modes
   - `node:18-alpine` - Minimal Node.js runtime
   - `postgres:14-alpine` - PostgreSQL database
   - `redis:7-alpine` - Redis cache/message broker
@@ -32,12 +44,31 @@ This file tracks all project dependencies, their relationships, and integration 
 
 ### Project Structure Dependencies
 - **TypeScript Runtime**: Core language support in `src/`
-- **Python Environment**: Module support in `python/`
+- **Python Environment**: Conditional module support in `python/`
 - **Jupyter Notebooks**: Research and analysis in `notebooks/`
 - **Shell Scripts**: Automation and setup in `scripts/`
 - **Web Framework**: Next.js application in `web/` (when applicable)
 
 ## Development Dependencies
+
+### Conditional Python Environment System
+- **Runtime Parameter System**:
+  - `ENV_MODE` - Primary mode selector (local, docker_isolated, docker_volume)
+  - `PYTHON_VERSION` - Python version specification (default: 3.11)
+  - `PROJECT_NAME` - Container/project naming (default: my-python-app)
+- **Mode-Specific Scripts**:
+  - `scripts/setup_python_env.sh` - Main entry point with parameter routing
+  - `scripts/setup_python_local.sh` - Local virtual environment setup
+  - `scripts/setup_python_docker_isolated.sh` - Isolated Docker environment
+  - `scripts/setup_python_docker_volume.sh` - Volume-mounted Docker environment
+- **Generated Artifacts** (mode-dependent):
+  - `python/requirements.txt` - Python dependencies (all modes)
+  - `python/.env.example` - Environment variable template (all modes)
+  - `python/.venv/` - Virtual environment (local mode only)
+  - `python/Dockerfile` - Container definition (Docker modes only)
+  - `python/docker-compose.yml` - Orchestration (docker_volume mode, if compose available)
+  - `python/.dockerignore` - Build context exclusions (Docker modes only)
+  - `python/README.md` - Mode-specific documentation (generated per mode)
 
 ### Docker Workflow Dependencies
 - **Dockerfile Variants**:
@@ -52,13 +83,17 @@ This file tracks all project dependencies, their relationships, and integration 
 
 ### Security and Compliance
 - **Vulnerability Scanning**: Container security validation
-- **Non-root User Configuration**: Security best practices
+- **Non-root User Configuration**: Security best practices (UID 1000 for volume mounts)
 - **Minimal Base Images**: Attack surface reduction
-- **Secret Management**: Secure configuration handling
+- **Secret Management**: Secure configuration handling via .env files
 
 ## AI Agent Dependencies
 
 ### Prompt Files (`.github/prompts/`)
+- **python-environment-setup.prompt.md**: Python environment mode selection and setup
+  - **Depends On**: `memory-bank/docker-workflow.md`, conditional instruction files
+  - **Required By**: Python environment setup workflows, mode selection
+  - **Integration**: Three-mode conditional system, runtime parameter selection
 - **docker-exotic-generator.prompt.md**: Advanced Docker configuration generation
   - **Depends On**: `memory-bank/docker-workflow.md`, instruction files
   - **Required By**: Container setup workflows, multi-environment deployments
@@ -73,6 +108,11 @@ This file tracks all project dependencies, their relationships, and integration 
   - **Integration**: Volume-first development, CLI parameterization, multi-service orchestration
 
 ### Instruction Files (`.github/instructions/`)
+- **python-environment-conditional.instructions.md**: Conditional Python setup standards
+  - **Depends On**: `memory-bank/systemPatterns.md`, Docker workflow patterns
+  - **Required By**: All Python environment setup operations
+  - **Parameters**: ENV_MODE, PYTHON_VERSION, PROJECT_NAME
+  - **Integration**: Three AI agents (Cline AI, Codex CLI, VS Code Copilot)
 - **typescript-standards.instructions.md**: TypeScript coding standards
 - **python-standards.instructions.md**: Python coding guidelines
 - **file-organization.instructions.md**: Project structure standards
@@ -86,39 +126,59 @@ This file tracks all project dependencies, their relationships, and integration 
 
 ## Cross-References and Relationships
 
-### Docker Ecosystem Integration
+### Conditional Python Environment Integration
 ```
-memory-bank/docker-workflow.md
-├── Defines: Four-phase containerization approach
+.github/instructions/python-environment-conditional.instructions.md
+├── Defines: Three-mode conditional setup (local, docker_isolated, docker_volume)
+├── Parameters: ENV_MODE, PYTHON_VERSION, PROJECT_NAME
 ├── Integrates: AI agent collaboration patterns
-└── Enables: .github/prompts/docker-exotic-generator.prompt.md
-    ├── Generates: Docker configurations
-    ├── Updates: memory-bank/dependencies.md (this file)
-    ├── References: instruction files for coding standards
-    └── Creates: Complete containerization workflow
+└── Enables: .github/prompts/python-environment-setup.prompt.md
+    ├── Presents: Mode selection to users
+    ├── Routes: scripts/setup_python_env.sh
+    ├── Generates: Mode-specific configurations and documentation
+    └── Updates: memory-bank/dependencies.md (this file)
+```
+
+### Script Dependency Flow
+```
+scripts/setup_python_env.sh (main entry)
+├── Validates: ENV_MODE parameter
+├── Routes to mode-specific scripts:
+│   ├── scripts/setup_python_local.sh (ENV_MODE=local)
+│   ├── scripts/setup_python_docker_isolated.sh (ENV_MODE=docker_isolated)
+│   └── scripts/setup_python_docker_volume.sh (ENV_MODE=docker_volume)
+├── Generates: .env.example, .gitignore updates
+└── Reports: Next steps and activation instructions
 ```
 
 ### AI Agent Collaboration Flow
 ```
-User Request → GitHub Copilot
-├── Reads: .github/prompts/docker-exotic-generator.prompt.md
-├── Applies: .github/instructions/*.instructions.md
-├── References: memory-bank/docker-workflow.md
-├── Generates: Docker configurations
-└── Updates: Memory Bank documentation
+User Request → GitHub Copilot/Cline AI/Codex CLI
+├── Reads: .github/prompts/python-environment-setup.prompt.md
+├── Applies: .github/instructions/python-environment-conditional.instructions.md
+├── References: memory-bank/docker-workflow.md (for Docker modes)
+├── Executes: scripts/setup_python_env.sh with chosen ENV_MODE
+├── Generates: Mode-specific configurations and documentation
+└── Updates: Memory Bank documentation per Self-Documentation Protocol
 ```
 
 ### Project Structure Dependencies
 ```
 Project Root
 ├── src/ (TypeScript) → Containerized in Docker
-├── python/ (Python) → Containerized in Docker
+├── python/ (Python) → Conditional environment setup
+│   ├── .venv/ (local mode only)
+│   ├── Dockerfile (Docker modes only)
+│   ├── docker-compose.yml (docker_volume mode, optional)
+│   ├── requirements.txt (all modes)
+│   ├── .env.example (all modes)
+│   └── README.md (mode-specific, generated)
 ├── web/ (Next.js) → Containerized in Docker
-├── scripts/ (Shell) → Container automation
+├── scripts/ → Conditional automation
 ├── memory-bank/ → Documentation and context
 └── .github/
     ├── prompts/ → Workflow automation
-    └── instructions/ → Coding standards
+    └── instructions/ → Conditional coding standards
 ```
 
 ## Dependencies and Relationships
@@ -130,16 +190,27 @@ Project Root
 
 ## Recent Additions
 
-### Docker Exotic Configuration System
-- **Added**: `docker-exotic-generator.prompt.md` - Advanced Docker workflow automation
-- **Enhanced**: `docker-workflow.md` - Four-phase approach with exotic patterns
-- **Integration**: Multi-environment support, security-first approach, AI agent collaboration
-- **Dependencies**: Node.js runtime, PostgreSQL, Redis, container orchestration tools
+### Conditional Python Environment Framework
+- **Added**: Complete conditional framework replacing hard-coded Python setup
+  - `python-environment-conditional.instructions.md` - Parameter-driven conditional instructions
+  - `python-environment-setup.prompt.md` - User-facing mode selection prompt
+  - `setup_python_env.sh` - Main entry script with parameter routing
+  - `setup_python_local.sh` - Enhanced local virtual environment setup
+  - `setup_python_docker_isolated.sh` - Fully isolated Docker environment
+  - `setup_python_docker_volume.sh` - Volume-mounted Docker with live editing
+- **Parameter System**: ENV_MODE runtime decision framework
+  - Defers implementation choices to script execution time
+  - Supports switching between modes without rebuilding project structure
+  - Generates mode-appropriate documentation and configurations
+- **Integration**: Three AI agent collaboration with conditional logic
+  - VS Code Copilot applies conditional instructions via `applyTo: "python/**"`
+  - Cline AI follows `.clinerules/` protocols for conditional setup
+  - Codex CLI executes script-driven conditional automation
 
 ### AI Agent Framework Enhancement
 - **Improved**: Cross-referencing between prompt files and Memory Bank
 - **Added**: Parametric input system for dynamic configuration generation
-- **Enhanced**: Quality assurance checklists for Docker configurations
+- **Enhanced**: Quality assurance checklists for all environment modes
 - **Integration**: VS Code Copilot, Cline AI, and Codex CLI collaboration
 
 ## Call to Action
@@ -159,6 +230,6 @@ This project supports three AI agents with specific dependency management respon
 
 ---
 
-**Last Updated**: 2025-05-31 (Docker exotic configuration system integration)  
-**Status**: Active tracking of AI Agent Framework and Docker workflow dependencies  
-**Next Review**: After any new dependency additions or architectural changes
+**Last Updated**: 2025-02-06 (Conditional Python environment framework implementation)  
+**Status**: Active tracking of conditional framework and AI Agent Framework dependencies  
+**Next Review**: After testing conditional framework and extending to other language environments
