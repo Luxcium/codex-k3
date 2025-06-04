@@ -15,6 +15,7 @@ This project supports three AI agents with distinct entry points:
 - Memory Bank files and `.clinerules/main-rules.md` must be read at the start of EVERY task or session.
 - Files must be re-read when changes are detected.
 - Changes in one file may affect others; always check for cross-file impacts.
+- If a file changed in the last commit, prioritise reading that delta first.
 
 ## Reading Order
 1. AGENTS.md (repository context/instructions)

@@ -5,6 +5,23 @@
 - Scripts must use existence checks (e.g., `[ -d "./memory-bank" ] || mkdir ./memory-bank`).
 - Scripts must be idempotent and not overwrite existing files.
 
+```ts
+// TypeScript example
+import { existsSync, mkdirSync } from 'fs';
+const dir = 'logs';
+if (!existsSync(dir)) {
+  mkdirSync(dir);
+}
+```
+
+```python
+# Python example
+import os
+dir = 'logs'
+if not os.path.isdir(dir):
+    os.makedirs(dir)
+```
+
 ## Markdown-Lint Compliance
 - All markdown files must pass strict linting.
 - Use markdownlint CLI or VSCode extension.
@@ -17,3 +34,4 @@
 
 ## Guidance
 - Reference these patterns in systemPatterns.md, techContext.md, and all Memory Bank compliance sections.
+- See [verification.md](verification.md) for repository checks.

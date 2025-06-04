@@ -92,7 +92,7 @@ This document provides a comprehensive workflow for creating and managing Docker
 - **Prompt Files**: Generate Docker configurations based on project context
 - **Instruction Files**: Coding standards for containerized applications
 - **Memory Bank Updates**: Track dependencies and architectural decisions
-- **Script Automation**: Idempotent container setup and management
+- **Script Automation**: Idempotent container setup and management via `scripts/setup_python_docker.sh`, `scripts/setup_python_local.sh`, and related helpers
 - **Cross-Agent Collaboration**: Workflows spanning multiple AI agents
 
 ## Dependencies

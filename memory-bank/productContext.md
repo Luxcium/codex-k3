@@ -26,17 +26,20 @@ This Memory Bank is established to ensure every project begins with a clear unde
 - Documentation must be clear, concise, and accessible to all agents.
 - User experience goals should be defined and updated as the project evolves.
 - All contributors must align on the intended outcomes before proceeding with implementation.
-- **All setup and file/folder creation must be performed via scripts in the `scripts/` directory, never manually.**
-- **Scripts must be idempotent, must not overwrite existing files, and must warn or skip if files/folders exist.**
-- **All rules and intentions must be documented in the README before implementation.**
-- **The README and all scripts must remain markdown-lint strict mode compliant at all times.**
+- See [.clinerules/pattern-examples.md](../.clinerules/pattern-examples.md) for script-driven setup requirements.
+
+### Example UX Flow
+
+1. User selects a project template.
+2. Scripts generate the directory structure and placeholder documentation.
+3. User reviews generated files and updates details.
 
 ## Dependencies and Relationships
 
-- **Depends On:** _[List upstream dependencies, e.g., projectbrief.md, systemPatterns.md, etc.]_
-- **Required By:** _[List downstream dependencies, e.g., other Memory Bank files]_
-- **Why This Order:** _[Explain why productContext.md is required before other documentation]_
-- **Impact Analysis:** _[Describe what happens if this file is not kept up to date or if dependencies change]_
+- **Depends On:** [projectbrief.md](./projectbrief.md), [systemPatterns.md](./systemPatterns.md)
+- **Required By:** [activeContext.md](./activeContext.md), [progress.md](./progress.md)
+- **Why This Order:** productContext.md defines purpose before architecture or progress can be tracked.
+- **Impact Analysis:** If outdated, user goals may diverge from implementation, leading to rework.
 
 ## Call to Action
 

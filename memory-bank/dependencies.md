@@ -1,4 +1,9 @@
-- [2025-02-06T22:18:00Z] Updated: Conditional Python environment framework dependencies. Added: ENV_MODE parameter system, mode-specific scripts (local, docker_isolated, docker_volume), conditional instruction files. Why: Replaced hard-coded Python setup with flexible, runtime-determined environment selection. Impact: Enables truly deferred decision-making for Python environments without upfront implementation choices. See .github/instructions/python-environment-conditional.instructions.md for complete conditional framework.
+#### Dependency: Conditional Python Environment Framework (2025-02-06)
+
+**Rationale:** Enables runtime selection of environment via ENV_MODE.
+**Depends On:** projectbrief.md, systemPatterns.md, techContext.md
+**Required By:** scripts/setup_python_env.sh and related scripts
+**Impact Analysis:** Provides flexible environments without hard-coded assumptions.
 # dependencies.md
 
 ## Purpose

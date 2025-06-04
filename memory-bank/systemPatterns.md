@@ -25,6 +25,15 @@ This file documents the system architecture, key technical decisions, design pat
 **Rationale:**  
 Organizing code by language and framework at the project root ensures clarity, modularity, and scalability. This structure supports multi-language, multi-framework projects and enforces separation of concerns. All directory and file creation must be performed via scripts in `scripts/`, never manually, and all documentation must remain markdown-lint compliant.
 
+```
+/
+├── src/
+├── web/
+├── python/
+├── scripts/
+└── notebooks/
+```
+
 This Memory Bank is initialized to provide a clear, adaptable template for documenting system architecture and patterns. It is designed to be updated as soon as a project context or architecture is defined.
 
 ## Key Technical Decisions
@@ -39,25 +48,25 @@ This Memory Bank is initialized to provide a clear, adaptable template for docum
 
 ## Design Patterns
 
-- Use established patterns and conventions where possible.
-- Document any deviations or custom patterns.
-- Ensure consistency across all components.
+- **Command Pattern**
+- **Adapter Pattern**
+- **Observer Pattern**
 
 ## Component Relationships
 
 - Clearly describe how components interact and depend on each other.
 - Update this section as new components are added or relationships change.
-- **All setup and file/folder creation must be performed via scripts in the `scripts/` directory, never manually.**
-- **Scripts must be idempotent, must not overwrite existing files, and must warn or skip if files/folders exist.**
-- **All rules and intentions must be documented in the README before implementation.**
-- **The README and all scripts must remain markdown-lint strict mode compliant at all times.**
 
 ## Dependencies and Relationships
 
-- **Depends On:** _[List upstream dependencies, e.g., projectbrief.md, productContext.md, etc.]_
-- **Required By:** _[List downstream dependencies, e.g., techContext.md, activeContext.md, etc.]_
-- **Why This Order:** _[Explain why systemPatterns.md must be established before technical or active context documentation]_
-- **Impact Analysis:** _[Describe what happens if this file is not kept up to date or if dependencies change]_
+| File | Relationship |
+| --- | --- |
+| [projectbrief.md](./projectbrief.md) | foundation |
+| [productContext.md](./productContext.md) | defines goals |
+| [techContext.md](./techContext.md) | implementation guidance |
+| [activeContext.md](./activeContext.md) | consumes patterns |
+| [progress.md](./progress.md) | tracks decisions |
+
 
 ## Call to Action
 
