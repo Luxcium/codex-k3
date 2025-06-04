@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Python Local Virtual Environment Setup
 # Creates a local virtual environment for Python development
 
-set -e
+set -euo pipefail
 
 # Import environment variables from main script
 PYTHON_DIR="${PYTHON_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../python" && pwd)}"
@@ -17,7 +17,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 log() {
-    echo -e "${BLUE}[$(date +'%Y-%m-%d %H:%M:%S')]${NC} $1"
+  echo -e "${BLUE}[$(date -u +'%Y-%m-%dT%H:%M:%SZ')]${NC} $1"
 }
 
 warn() {
@@ -241,6 +241,12 @@ For more information, see:
 - Instructions: \`../.github/instructions/python-environment-conditional.instructions.md\`
 - Prompt: \`../.github/prompts/python-environment-setup.prompt.md\`
 EOF
+
+log "Verifying Markdown compliance…"
+markdownlint --config .markdownlint.yaml "$README_FILE" || {
+  echo "[ERROR] $README_FILE failed markdownlint."
+  exit 1
+}
 
 success "Updated README.md with local environment instructions"
 
