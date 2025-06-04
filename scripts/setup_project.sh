@@ -1,8 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # setup_project.sh: Idempotent project setup script
 # Creates required directories and files without overwriting existing content
 
-set -e
+set -euo pipefail
+
+log() {
+  echo "[$(date -u '+%Y-%m-%dT%H:%M:%SZ')] $1"
+}
 
 # Directories to create
 DIRS=(".github" ".vscode" "memory-bank" "scripts")
@@ -14,9 +18,9 @@ FILES=(".gitignore" ".clinerules" "README.md" "AGENTS.md")
 for dir in "${DIRS[@]}"; do
   if [ ! -d "$dir" ]; then
     mkdir -p "$dir"
-    echo "Created directory: $dir"
+    log "Created directory: $dir"
   else
-    echo "Directory already exists: $dir"
+    log "Directory already exists: $dir"
   fi
 done
 
@@ -25,27 +29,34 @@ for file in "${FILES[@]}"; do
   # Check if file exists
   if [ ! -f "$file" ]; then
     touch "$file"
-    echo "Created file: $file"
+    log "Created file: $file"
   else
     # File exists, check size and log details
     size=$(stat -c%s "$file")
     if [ "$size" -eq 0 ]; then
-      echo "File $file exists but is empty (size=0)."
+      log "File $file exists but is empty (size=0)."
     else
-      echo "File $file already exists (size=$size bytes)."
+      log "File $file already exists (size=$size bytes)."
     fi
   fi
 
   # Only add placeholder if file is empty
   if [ ! -s "$file" ]; then
     echo "# Placeholder for $file" > "$file"
-    echo "Added placeholder to $file"
+    log "Added placeholder to $file"
+    if [[ "$file" == *.md ]]; then
+      log "Verifying Markdown compliance…"
+      markdownlint --config .markdownlint.yaml "$file" || {
+        echo "[ERROR] $file failed markdownlint."
+        exit 1
+      }
+    fi
   else
-    echo "File $file is not empty, skipping placeholder."
+    log "File $file is not empty, skipping placeholder."
   fi
 done
 
 # Make script itself executable
 chmod +x "$0"
 
-echo "Project structure setup complete."
+log "Project structure setup complete."

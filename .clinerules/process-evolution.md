@@ -10,3 +10,13 @@
 ## Guidance
 - Follow these steps to ensure robust, context-rich, and error-resistant development.
 - Reference this protocol in progress.md, activeContext.md, and all Memory Bank compliance sections.
+
+```mermaid
+flowchart TD
+    Start --> Plan --> Update --> Verify --> Done
+```
+
+### Mini Case
+During the Python framework update, the team read all Memory Bank files,
+planned script changes, updated documentation first, then implemented
+`setup_python_docker.sh`. Verification scripts ensured compliance.

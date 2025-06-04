@@ -1,16 +1,47 @@
-# Scripts Directory
+# `scripts/` Directory
 
-This directory contains all automation and setup scripts for the project.
+This folder contains utility scripts for setting up, validating, and maintaining the repository.  
+**All scripts must pass strict markdown-lint on any Markdown they generate or update.**
 
-## Purpose
-- Automate environment setup for local and Docker workflows
-- Ensure idempotent, safe, and repeatable setup
-- Store only shell scripts related to project automation
+## Conventions
+1. **Shebang & Strict Mode**  
+   ```bash
+   #!/usr/bin/env bash
+   set -euo pipefail
+   ```
+2. **Idempotent Operations**
+   Before creating a directory or file, check if it already exists:
 
-## Structure
-- `setup_python_local.sh` — Local Python venv setup
-- `setup_python_docker.sh` — Docker image build for Python
+   ```bash
+   if [ ! -d "some_dir" ]; then
+     mkdir -p "some_dir"
+     echo "[`date '+%Y-%m-%dT%H:%M:%S%z'`] Created some_dir"
+   else
+     echo "[`date '+%Y-%m-%dT%H:%M:%S%z'`] some_dir already exists"
+   fi
+   ```
+3. **Timestamped Logging**
+   Every major step must echo a log line in [YYYY-MM-DDThh:mm:ssZ] format.
+4. **Markdown-lint Verification**
+   If a script modifies any *.md, it must run:
 
-All scripts are idempotent and do not overwrite existing environments or files.
+   ```bash
+   markdownlint --config .markdownlint.yaml <path/to/file>.md
+   ```
 
-See [../.github/instructions/python-environment.instructions.md](../.github/instructions/python-environment.instructions.md) for standards.
+   and exit non-zero if lint errors occur.
+
+## Script Index
+- `setup_project.sh` — Base scaffolding (no overwrites)
+- `setup_python_local.sh` — Sets up Python venv + dependencies
+- `setup_python_docker.sh` — Builds Python Docker image
+- `check-dependencies.sh` — Verifies memory-bank/dependencies.md structure
+- `check-memory-bank.sh` — Runs markdownlint on memory-bank/*.md
+- `validate-instructions.sh` — Lints .github/instructions/*.instructions.md
+- `validate-prompt.sh` — Lints .github/prompts/*.prompt.md
+- `check-markdown.sh` — Runs markdownlint on all Markdown files in repo
+- `verify-all.sh` — Runs full verification suite
+
+## Verification
+- Run `markdownlint --config .markdownlint.yaml scripts/README.md`
+- Execute `scripts/verify-all.sh` before committing

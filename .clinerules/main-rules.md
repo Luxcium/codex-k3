@@ -144,6 +144,8 @@ Current Preferences:
 - **None set**: No special preferences currently active, !!!this shall
   be removed when a first preference is set!!!.
 
+- **reply-verbosity**: concise
+
 To add or update preferences:
 1. Edit this section following the strictest set of markdown-lint
    guidelines

@@ -14,7 +14,10 @@ This file documents the technologies, development setup, technical constraints, 
 
 ## Technologies Used
 
-This Memory Bank is initialized to provide a template for documenting all technologies and tools used in a project. Update this section as soon as specific technologies are chosen.
+- **Node.js 22**
+- **TypeScript 5.7**
+- **Python 3.11**
+- **Next.js 14**
 
 ## Development Setup
 
@@ -24,7 +27,9 @@ This Memory Bank is initialized to provide a template for documenting all techno
   - `scripts/` for shell scripts only
   - `python/` for Python code
   - `notebooks/` for Jupyter notebooks
-- All directory and file creation must be performed via scripts in `scripts/`, never manually.
+  - All directory and file creation must be performed via scripts in `scripts/`, never manually.
+
+Refer to the centralized directory structure diagram in [systemPatterns.md](./systemPatterns.md) for the latest and authoritative version.
 - Document environment setup and configuration.
 - Ensure instructions are clear for onboarding new agents or contributors.
 - Update as tooling or setup changes.
@@ -32,7 +37,7 @@ This Memory Bank is initialized to provide a template for documenting all techno
 ## Technical Constraints
 
 - Codebase organization must follow the standard described in [systemPatterns.md](./systemPatterns.md).
-- All setup and file/folder creation must be script-driven and markdown-lint compliant.
+ - All setup and file/folder creation must follow the patterns in [.clinerules/pattern-examples.md](../.clinerules/pattern-examples.md).
 - List any known limitations or requirements.
 - Update as new constraints are discovered or resolved.
 
@@ -40,17 +45,13 @@ This Memory Bank is initialized to provide a template for documenting all techno
 
 - Document all dependencies and their purposes.
 - Update this section as dependencies are added, removed, or updated.
-- **All setup and file/folder creation must be performed via scripts in the `scripts/` directory, never manually.**
-- **Scripts must be idempotent, must not overwrite existing files, and must warn or skip if files/folders exist.**
-- **All rules and intentions must be documented in the README before implementation.**
-- **The README and all scripts must remain markdown-lint strict mode compliant at all times.**
 
 ## Dependencies and Relationships
 
-- **Depends On:** _[List upstream dependencies, e.g., systemPatterns.md, projectbrief.md, etc.]_
-- **Required By:** _[List downstream dependencies, e.g., activeContext.md, progress.md, etc.]_
-- **Why This Order:** _[Explain why techContext.md must be established before active or progress tracking]_
-- **Impact Analysis:** _[Describe what happens if this file is not kept up to date or if dependencies change]_
+- **Depends On:** [systemPatterns.md](./systemPatterns.md), [projectbrief.md](./projectbrief.md)
+- **Required By:** [activeContext.md](./activeContext.md), [progress.md](./progress.md)
+- **Why This Order:** techContext.md establishes tools and constraints before active work or progress tracking.
+- **Impact Analysis:** Outdated tooling information causes misaligned setups and wasted effort.
 
 ## Call to Action
 
