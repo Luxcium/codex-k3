@@ -1,4 +1,3 @@
-
 # Python Directory
 
 This directory contains all Python source code, modules, and environment configuration for the project.
@@ -14,4 +13,4 @@ This directory contains all Python source code, modules, and environment configu
 - `Dockerfile` — Container build for Python environment
 - `README.md` — Setup and usage instructions
 
-See [../.github/instructions/python-environment.instructions.md](../.github/instructions/python-environment.instructions.md) for full environment standards.
+See [python-environment.instructions.md](../.github/instructions/python-environment.instructions.md) for full environment standards.
