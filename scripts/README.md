@@ -40,6 +40,8 @@ This folder contains utility scripts for setting up, validating, and maintaining
 - `validate-instructions.sh` — Lints .github/instructions/*.instructions.md
 - `validate-prompt.sh` — Lints .github/prompts/*.prompt.md
 - `check-markdown.sh` — Runs markdownlint on all Markdown files in repo
+- `verify-all.sh` — Runs full verification suite
 
 ## Verification
 - Run `markdownlint --config .markdownlint.yaml scripts/README.md`
+- Execute `scripts/verify-all.sh` before committing

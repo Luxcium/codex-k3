@@ -21,3 +21,10 @@
 ## Guidance
 - Use this journal to log new patterns, challenges, and lessons learned.
 - Reference this file in progress.md, activeContext.md, and all Memory Bank compliance sections.
+
+### Entry Template
+
+```
+#### [YYYY-MM-DD] Pattern Name
+Impact: description of effect on project
+```

@@ -1,4 +1,5 @@
 # projectbrief.md
+STATUS: 🟢 Active
 
 ## Purpose
 This file is the foundation of the Memory Bank. It defines the core requirements, goals, and scope for any project. It is the primary source of truth for all subsequent documentation and must be maintained with precision.

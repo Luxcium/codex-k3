@@ -97,6 +97,16 @@ interpreted as strict instructions by the AI agent:
 - Declare “SUCCESS” or “FAILURE” only after objective, repeatable
   post-run validation confirms task completion.
 
+## Verification Block Standard
+
+All prompts, instruction files, and scripts must end with a **Verification** section.
+This block reminds contributors to run:
+
+- `markdownlint --strict` on all updated Markdown files
+- Any relevant validation scripts such as `scripts/verify-all.sh`
+
+Failure to include this block or run the checks is considered non-compliant.
+
 ---
 
 > This file is the single source of truth for agent and repository
