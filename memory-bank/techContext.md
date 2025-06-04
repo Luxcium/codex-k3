@@ -29,14 +29,7 @@ This file documents the technologies, development setup, technical constraints, 
   - `notebooks/` for Jupyter notebooks
   - All directory and file creation must be performed via scripts in `scripts/`, never manually.
 
-```
-/
-├── src/
-├── web/
-├── python/
-├── scripts/
-└── notebooks/
-```
+Refer to the centralized directory structure diagram in [systemPatterns.md](./systemPatterns.md) for the latest and authoritative version.
 - Document environment setup and configuration.
 - Ensure instructions are clear for onboarding new agents or contributors.
 - Update as tooling or setup changes.
