@@ -17,6 +17,8 @@ This file tracks the current work focus, recent changes, next steps, and active 
 
 Completed conditional Python environment framework that provides three environment modes (local virtual environment, Docker isolated, Docker volume-mounted) through parameterized instructions and scripts. The framework defers hard implementation choices to runtime via ENV_MODE parameter, following project's script-driven creation protocols.
 
+Current work focuses on hardening automation scripts for repeatable use. Tasks include standardizing script headers, creating a shared logging library, adding non-interactive `--force` options, and updating documentation so AI agents understand when and how to use each script.
+
 ## Recent Changes
 
 - **Conditional Python Environment Framework**: Created comprehensive conditional setup system:
@@ -48,13 +50,16 @@ Completed conditional Python environment framework that provides three environme
 - Update `memory-bank/dependencies.md` with conditional Python environment dependencies
 - Update `memory-bank/docker-workflow.md` with new conditional Docker patterns
 - Update `memory-bank/progress.md` with completed framework status
+- Record script-resilience improvements, including logging library and force options
 
 ### Testing
 - Run each environment mode to validate behavior
+- Execute all scripts twice to confirm idempotency
 
 ### Expansion
 - Document lessons learned about conditional instruction design
 - Explore applying framework to other languages (Node.js, etc.)
+- Share logging utilities across additional language setups
 
 ## Active Decisions
 

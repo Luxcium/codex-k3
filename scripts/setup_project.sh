@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # setup_project.sh: Idempotent project setup script
-# Creates required directories and files without overwriting existing content
+# Purpose: create initial directories referenced by the Memory Bank.
+# Cross-Reference: memory-bank/systemPatterns.md and .clinerules/main-rules.md.
+# Creates required directories and files without overwriting existing content.
 
 set -euo pipefail
 
@@ -60,3 +62,6 @@ done
 chmod +x "$0"
 
 log "Project structure setup complete."
+
+# Verification
+# Run `scripts/verify-all.sh` after project setup.

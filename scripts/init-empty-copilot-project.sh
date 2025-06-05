@@ -1,6 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Initialize a minimal project structure for VS Code Copilot.
+# Cross-Reference: memory-bank/systemPatterns.md and .clinerules/main-rules.md.
 
 # Create necessary directories
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/logging.sh"
+
 mkdir -p .github/prompts
 mkdir -p memory-bank
 mkdir -p .vscode
@@ -14,4 +20,7 @@ mkdir -p .clinerules
 [ -f .github/prompts/default.prompt.md ] || touch .github/prompts/default.prompt.md
 [ -f .vscode/settings.json ] || touch .vscode/settings.json
 
-echo "✅ VSCode Copilot structure created safely."
+log_success "VSCode Copilot structure created safely."
+
+# Verification
+# Run `scripts/verify-all.sh` after initialization.

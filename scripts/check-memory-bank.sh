@@ -1,19 +1,22 @@
 #!/usr/bin/env bash
+# Lint all Memory Bank documentation
+# Cross-Reference: memory-bank/README.md and .clinerules/main-rules.md.
 set -euo pipefail
-
-log() {
-  echo "[$(date -u '+%Y-%m-%dT%H:%M:%SZ')] $1"
-}
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/logging.sh"
 
 dir="memory-bank"
 
 if [ ! -d "$dir" ]; then
-  log "[ERROR] $dir not found"
+  log_error "$dir not found"
   exit 1
 fi
 
-log "Running markdownlint on $dir/*.md"
+log_info "Running markdownlint on $dir/*.md"
 markdownlint --config .markdownlint.yaml "$dir"/*.md || {
-  echo "[ERROR] Markdownlint failed for $dir"
+  log_error "Markdownlint failed for $dir"
   exit 1
 }
+
+# Verification
+# Run `scripts/verify-all.sh` before committing documentation changes.

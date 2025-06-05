@@ -1,62 +1,45 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Python Docker Volume-Mounted Environment Setup
-# Creates a Docker environment with volume mounting for live code editing
+# Purpose: create a Docker environment with source code mounted for editing.
+# Cross-Reference: memory-bank/docker-workflow.md and .clinerules/main-rules.md.
 
-set -e
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/logging.sh"
+FORCE="${FORCE:-no}"
 
 # Import environment variables from main script
 PYTHON_DIR="${PYTHON_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../python" && pwd)}"
 PYTHON_VERSION="${PYTHON_VERSION:-3.11}"
 PROJECT_NAME="${PROJECT_NAME:-my-python-app}"
 
-# Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+# Logging handled by scripts/lib/logging.sh
 
-log() {
-    echo -e "${BLUE}[$(date +'%Y-%m-%d %H:%M:%S')]${NC} $1"
-}
-
-warn() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
-}
-
-error() {
-    echo -e "${RED}[ERROR]${NC} $1"
-}
-
-success() {
-    echo -e "${GREEN}[SUCCESS]${NC} $1"
-}
-
-log "Setting up Docker volume-mounted Python environment..."
-log "Python Directory: $PYTHON_DIR"
-log "Python Version: $PYTHON_VERSION"
-log "Project Name: $PROJECT_NAME"
+log_info "Setting up Docker volume-mounted Python environment..."
+log_info "Python Directory: $PYTHON_DIR"
+log_info "Python Version: $PYTHON_VERSION"
+log_info "Project Name: $PROJECT_NAME"
 
 # Check if Docker is available
 if ! command -v docker &> /dev/null; then
-    error "Docker is not installed or not in PATH"
-    error "Please install Docker and try again"
+    log_error "Docker is not installed or not in PATH"
+    log_error "Please install Docker and try again"
     exit 1
 fi
 
 # Check if docker-compose is available
 if ! command -v docker-compose &> /dev/null; then
-    warn "docker-compose not found, will use docker run commands instead"
+    log_warn "docker-compose not found, will use docker run commands instead"
     USE_COMPOSE=false
 else
     USE_COMPOSE=true
-    log "docker-compose found, will create compose configuration"
+    log_info "docker-compose found, will create compose configuration"
 fi
 
 # Create requirements.txt if it doesn't exist
 REQUIREMENTS_FILE="$PYTHON_DIR/requirements.txt"
 if [ ! -f "$REQUIREMENTS_FILE" ]; then
-    log "Creating requirements.txt..."
+    log_info "Creating requirements.txt..."
     cat > "$REQUIREMENTS_FILE" << EOF
 # Python dependencies for volume-mounted Docker environment
 # Add your project dependencies below
@@ -67,26 +50,31 @@ if [ ! -f "$REQUIREMENTS_FILE" ]; then
 # pytest>=7.0.0
 # jupyter>=1.0.0
 EOF
-    success "Created requirements.txt"
+    log_success "Created requirements.txt"
 else
-    log "requirements.txt already exists"
+    log_info "requirements.txt already exists"
 fi
 
 # Create Dockerfile for volume-mounted environment
 DOCKERFILE="$PYTHON_DIR/Dockerfile"
 if [ -f "$DOCKERFILE" ]; then
-    warn "Dockerfile already exists"
-    read -p "Do you want to overwrite it? (y/N): " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        log "Skipping Dockerfile creation"
+    log_warn "Dockerfile already exists"
+    if [[ "$FORCE" != "yes" ]]; then
+        read -p "Do you want to overwrite it? (y/N): " -n 1 -r
+        echo
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            log_info "Skipping Dockerfile creation"
+        else
+            rm "$DOCKERFILE"
+        fi
     else
+        log_warn "Overwriting Dockerfile due to FORCE=yes"
         rm "$DOCKERFILE"
     fi
 fi
 
 if [ ! -f "$DOCKERFILE" ]; then
-    log "Creating Dockerfile for volume-mounted environment..."
+    log_info "Creating Dockerfile for volume-mounted environment..."
     cat > "$DOCKERFILE" << EOF
 # Python Docker Volume-Mounted Environment
 FROM python:${PYTHON_VERSION}-slim
@@ -127,25 +115,30 @@ ENV PYTHONPATH=/app
 # Default command - keep container running for interactive use
 CMD ["bash"]
 EOF
-    success "Created Dockerfile for volume-mounted environment"
+    log_success "Created Dockerfile for volume-mounted environment"
 fi
 
 # Create docker-compose.yml if docker-compose is available
 if [ "$USE_COMPOSE" = true ]; then
     COMPOSE_FILE="$PYTHON_DIR/docker-compose.yml"
     if [ -f "$COMPOSE_FILE" ]; then
-        warn "docker-compose.yml already exists"
-        read -p "Do you want to overwrite it? (y/N): " -n 1 -r
-        echo
-        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-            log "Skipping docker-compose.yml creation"
+        log_warn "docker-compose.yml already exists"
+        if [[ "$FORCE" != "yes" ]]; then
+            read -p "Do you want to overwrite it? (y/N): " -n 1 -r
+            echo
+            if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+                log_info "Skipping docker-compose.yml creation"
+            else
+                rm "$COMPOSE_FILE"
+            fi
         else
+            log_warn "Overwriting docker-compose.yml due to FORCE=yes"
             rm "$COMPOSE_FILE"
         fi
     fi
 
     if [ ! -f "$COMPOSE_FILE" ]; then
-        log "Creating docker-compose.yml..."
+        log_info "Creating docker-compose.yml..."
         cat > "$COMPOSE_FILE" << EOF
 version: '3.8'
 
@@ -179,14 +172,14 @@ volumes:
   pip-cache:
     driver: local
 EOF
-        success "Created docker-compose.yml"
+        log_success "Created docker-compose.yml"
     fi
 fi
 
 # Create .dockerignore if it doesn't exist
 DOCKERIGNORE="$PYTHON_DIR/.dockerignore"
 if [ ! -f "$DOCKERIGNORE" ]; then
-    log "Creating .dockerignore..."
+    log_info "Creating .dockerignore..."
     cat > "$DOCKERIGNORE" << EOF
 # Docker ignore file for Python volume-mounted environment
 .git
@@ -218,14 +211,14 @@ Dockerfile
 .dockerignore
 docker-compose.yml
 EOF
-    success "Created .dockerignore"
+    log_success "Created .dockerignore"
 else
-    log ".dockerignore already exists"
+    log_info ".dockerignore already exists"
 fi
 
 # Update python/README.md with volume-mounted instructions
 README_FILE="$PYTHON_DIR/README.md"
-log "Updating README.md with Docker volume-mounted instructions..."
+log_info "Updating README.md with Docker volume-mounted instructions..."
 
 COMPOSE_INSTRUCTIONS=""
 if [ "$USE_COMPOSE" = true ]; then
@@ -387,50 +380,53 @@ For more information, see:
 - Prompt: \`../.github/prompts/python-environment-setup.prompt.md\`
 EOF
 
-success "Updated README.md with Docker volume-mounted instructions"
+log_success "Updated README.md with Docker volume-mounted instructions"
 
 # Build the Docker image
-log "Building Docker image..."
+log_info "Building Docker image..."
 cd "$PYTHON_DIR"
 
 if docker build -t "$PROJECT_NAME" .; then
-    success "Docker image built successfully!"
+    log_success "Docker image built successfully!"
     
     # Test the setup
-    log "Testing volume mount functionality..."
+    log_info "Testing volume mount functionality..."
     if [ "$USE_COMPOSE" = true ]; then
-        log "Testing with docker-compose..."
+        log_info "Testing with docker-compose..."
         if docker-compose run --rm python python --version; then
-            success "Docker compose setup is working correctly"
+            log_success "Docker compose setup is working correctly"
         else
-            warn "Docker compose test failed, but image was built"
+            log_warn "Docker compose test failed, but image was built"
         fi
     else
-        log "Testing with docker run..."
+        log_info "Testing with docker run..."
         if docker run --rm -v "$(pwd):/app" -w /app "$PROJECT_NAME" python --version; then
-            success "Volume mount setup is working correctly"
+            log_success "Volume mount setup is working correctly"
         else
-            warn "Volume mount test failed, but image was built"
+            log_warn "Volume mount test failed, but image was built"
         fi
     fi
 else
-    error "Docker build failed"
+    log_error "Docker build failed"
     exit 1
 fi
 
-success "Docker volume-mounted environment setup completed!"
-log ""
-log "Next steps:"
-log "  1. Navigate to the python/ directory: cd python/"
-log "  2. Copy .env.example to .env: cp .env.example .env"
-log "  3. Edit .env with your environment variables"
-log "  4. Add your Python code to the python/ directory"
+log_success "Docker volume-mounted environment setup completed!"
+log_info ""
+log_info "Next steps:"
+log_info "  1. Navigate to the python/ directory: cd python/"
+log_info "  2. Copy .env.example to .env: cp .env.example .env"
+log_info "  3. Edit .env with your environment variables"
+log_info "  4. Add your Python code to the python/ directory"
 
 if [ "$USE_COMPOSE" = true ]; then
-    log "  5. Start development environment: docker-compose up -d"
-    log "  6. Enter container for development: docker-compose exec python bash"
+    log_info "  5. Start development environment: docker-compose up -d"
+    log_info "  6. Enter container for development: docker-compose exec python bash"
 else
-    log "  5. Run development container: docker run --rm -it -v \$(pwd):/app -w /app --env-file .env $PROJECT_NAME bash"
+    log_info "  5. Run development container: docker run --rm -it -v \$(pwd):/app -w /app --env-file .env $PROJECT_NAME bash"
 fi
 
-log "  7. Your code changes will be immediately reflected in the container!"
+log_info "  7. Your code changes will be immediately reflected in the container!"
+
+# Verification
+# Run `scripts/verify-all.sh` after Docker setup completes.
