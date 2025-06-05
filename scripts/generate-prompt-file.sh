@@ -1,37 +1,19 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # AI Agent Framework - Prompt File Generator
-# This script creates new .prompt.md files for AI-assisted development workflows
+# Purpose: create new `.prompt.md` files for repeatable tasks.
+# Cross-Reference: memory-bank/dependencies.md and .clinerules/main-rules.md.
 
 set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/logging.sh"
 
 # Configuration
 PROMPTS_DIR=".github/prompts"
 INSTRUCTIONS_DIR=".github/instructions"
+FORCE="${FORCE:-no}"
 
-# Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
-
-# Helper functions
-log_info() {
-    echo -e "${BLUE}[INFO]${NC} $1"
-}
-
-log_success() {
-    echo -e "${GREEN}[SUCCESS]${NC} $1"
-}
-
-log_warning() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
-}
-
-log_error() {
-    echo -e "${RED}[ERROR]${NC} $1"
-}
+# Logging handled by scripts/lib/logging.sh
 
 # AI Decision Matrix - When to create prompts (from Pair 05 guidelines)
 should_create_prompt() {
@@ -215,11 +197,15 @@ check_file_exists() {
     
     if [[ -f "$filepath" ]]; then
         log_warning "File already exists: $filepath"
-        read -p "Do you want to overwrite it? (y/N): " -n 1 -r
-        echo
-        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-            log_info "Operation cancelled."
-            exit 0
+        if [[ "$FORCE" != "yes" ]]; then
+            read -p "Do you want to overwrite it? (y/N): " -n 1 -r
+            echo
+            if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+                log_info "Operation cancelled."
+                exit 0
+            fi
+        else
+            log_warn "Overwriting $filepath due to FORCE=yes"
         fi
     fi
 }
@@ -427,15 +413,19 @@ This script generates new .prompt.md files for AI-assisted development workflows
 that integrate with the existing instruction files and memory bank system.
 
 OPTIONS:
-    -h, --help          Show this help message
     -n, --name FILE     Name of the prompt file (required)
     -t, --title TEXT    Title for the prompt (required)
     -d, --desc TEXT     Description of the prompt's purpose (required)
+    --force             Overwrite existing files without prompt
+    -h, --help          Show this help message
 
 EXAMPLES:
     $0 -n "vue-generator.prompt.md" -t "Vue Component Generator" -d "Generate Vue.js components with TypeScript and testing"
     $0 -n "api-endpoint.prompt.md" -t "API Endpoint Generator" -d "Create REST API endpoints with validation and documentation"
     $0 -n "notebook-creator.prompt.md" -t "ML Notebook Creator" -d "Generate Jupyter notebooks for machine learning workflows"
+
+Environment Variables:
+    FORCE=yes          Overwrite existing files without prompt
 
 The generated file will be placed in $PROMPTS_DIR/ and will include:
 - Parametric input system with \${input:name:default} syntax
@@ -471,6 +461,10 @@ main() {
             -d|--desc)
                 description="$2"
                 shift 2
+                ;;
+            --force)
+                FORCE=yes
+                shift
                 ;;
             *)
                 log_error "Unknown option: $1"
@@ -510,3 +504,6 @@ main() {
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     main "$@"
 fi
+
+# Verification
+# Run `scripts/verify-all.sh` after creating a prompt file.

@@ -1,3 +1,4 @@
+- [2025-06-05T03:55:03Z] Task: Hardened automation scripts with shared logging utilities, standardized headers, and optional `--force` flags for idempotent reruns. Updated documentation for AI agents and human contributors.
 - [2025-02-06T22:19:00Z] Task: Conditional Python environment framework completed; Created parameter-driven system with ENV_MODE routing (local, docker_isolated, docker_volume), comprehensive scripts, and mode-specific documentation generation. Replaced hard-coded approach with true runtime decision deferral. See .github/instructions/python-environment-conditional.instructions.md and .github/prompts/python-environment-setup.prompt.md for complete framework. Note: Executing Self-Documentation Protocol. This entry reaffirms that all actions and context changes must be documented and that this rule itself is part of the ongoing protocol.
 # progress.md
 

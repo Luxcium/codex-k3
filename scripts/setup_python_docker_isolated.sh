@@ -1,53 +1,36 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Python Docker Isolated Environment Setup
-# Creates a fully isolated Docker environment for Python development
+# Purpose: create a Docker container without volume mounts for Python code.
+# Cross-Reference: memory-bank/docker-workflow.md and .clinerules/main-rules.md.
 
-set -e
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/logging.sh"
+FORCE="${FORCE:-no}"
 
 # Import environment variables from main script
 PYTHON_DIR="${PYTHON_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../python" && pwd)}"
 PYTHON_VERSION="${PYTHON_VERSION:-3.11}"
 PROJECT_NAME="${PROJECT_NAME:-my-python-app}"
 
-# Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+# Logging handled by scripts/lib/logging.sh
 
-log() {
-    echo -e "${BLUE}[$(date +'%Y-%m-%d %H:%M:%S')]${NC} $1"
-}
-
-warn() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
-}
-
-error() {
-    echo -e "${RED}[ERROR]${NC} $1"
-}
-
-success() {
-    echo -e "${GREEN}[SUCCESS]${NC} $1"
-}
-
-log "Setting up Docker isolated Python environment..."
-log "Python Directory: $PYTHON_DIR"
-log "Python Version: $PYTHON_VERSION"
-log "Project Name: $PROJECT_NAME"
+log_info "Setting up Docker isolated Python environment..."
+log_info "Python Directory: $PYTHON_DIR"
+log_info "Python Version: $PYTHON_VERSION"
+log_info "Project Name: $PROJECT_NAME"
 
 # Check if Docker is available
 if ! command -v docker &> /dev/null; then
-    error "Docker is not installed or not in PATH"
-    error "Please install Docker and try again"
+    log_error "Docker is not installed or not in PATH"
+    log_error "Please install Docker and try again"
     exit 1
 fi
 
 # Create requirements.txt if it doesn't exist
 REQUIREMENTS_FILE="$PYTHON_DIR/requirements.txt"
 if [ ! -f "$REQUIREMENTS_FILE" ]; then
-    log "Creating requirements.txt..."
+    log_info "Creating requirements.txt..."
     cat > "$REQUIREMENTS_FILE" << EOF
 # Python dependencies for isolated Docker environment
 # Add your project dependencies below
@@ -57,26 +40,31 @@ if [ ! -f "$REQUIREMENTS_FILE" ]; then
 # python-dotenv>=1.0.0
 # pytest>=7.0.0
 EOF
-    success "Created requirements.txt"
+    log_success "Created requirements.txt"
 else
-    log "requirements.txt already exists"
+    log_info "requirements.txt already exists"
 fi
 
 # Create Dockerfile for isolated environment
 DOCKERFILE="$PYTHON_DIR/Dockerfile"
 if [ -f "$DOCKERFILE" ]; then
-    warn "Dockerfile already exists"
-    read -p "Do you want to overwrite it? (y/N): " -n 1 -r
-    echo
-    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        log "Skipping Dockerfile creation"
+    log_warn "Dockerfile already exists"
+    if [[ "$FORCE" != "yes" ]]; then
+        read -p "Do you want to overwrite it? (y/N): " -n 1 -r
+        echo
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            log_info "Skipping Dockerfile creation"
+        else
+            rm "$DOCKERFILE"
+        fi
     else
+        log_warn "Overwriting Dockerfile due to FORCE=yes"
         rm "$DOCKERFILE"
     fi
 fi
 
 if [ ! -f "$DOCKERFILE" ]; then
-    log "Creating Dockerfile for isolated environment..."
+    log_info "Creating Dockerfile for isolated environment..."
     cat > "$DOCKERFILE" << EOF
 # Python Docker Isolated Environment
 FROM python:${PYTHON_VERSION}-slim
@@ -109,13 +97,13 @@ USER app
 # Set default command
 CMD ["python", "--version"]
 EOF
-    success "Created Dockerfile for isolated environment"
+    log_success "Created Dockerfile for isolated environment"
 fi
 
 # Create .dockerignore if it doesn't exist
 DOCKERIGNORE="$PYTHON_DIR/.dockerignore"
 if [ ! -f "$DOCKERIGNORE" ]; then
-    log "Creating .dockerignore..."
+    log_info "Creating .dockerignore..."
     cat > "$DOCKERIGNORE" << EOF
 # Docker ignore file for Python isolated environment
 .git
@@ -145,14 +133,14 @@ README.md
 Dockerfile
 .dockerignore
 EOF
-    success "Created .dockerignore"
+    log_success "Created .dockerignore"
 else
-    log ".dockerignore already exists"
+    log_info ".dockerignore already exists"
 fi
 
 # Update python/README.md with isolated instructions
 README_FILE="$PYTHON_DIR/README.md"
-log "Updating README.md with Docker isolated instructions..."
+log_info "Updating README.md with Docker isolated instructions..."
 
 cat > "$README_FILE" << EOF
 # Python Environment - Docker Isolated Mode
@@ -260,31 +248,34 @@ For more information, see:
 - Prompt: \`../.github/prompts/python-environment-setup.prompt.md\`
 EOF
 
-success "Updated README.md with Docker isolated instructions"
+log_success "Updated README.md with Docker isolated instructions"
 
 # Build the Docker image to verify everything works
-log "Building Docker image to verify setup..."
+log_info "Building Docker image to verify setup..."
 cd "$PYTHON_DIR"
 
 if docker build -t "$PROJECT_NAME" .; then
-    success "Docker image built successfully!"
-    log "Testing Python installation..."
+    log_success "Docker image built successfully!"
+    log_info "Testing Python installation..."
     if docker run --rm "$PROJECT_NAME" python --version; then
-        success "Python is working correctly in the container"
+        log_success "Python is working correctly in the container"
     else
-        warn "Python test failed, but image was built"
+        log_warn "Python test failed, but image was built"
     fi
 else
-    error "Docker build failed"
+    log_error "Docker build failed"
     exit 1
 fi
 
-success "Docker isolated environment setup completed!"
-log ""
-log "Next steps:"
-log "  1. Navigate to the python/ directory: cd python/"
-log "  2. Copy .env.example to .env: cp .env.example .env"
-log "  3. Edit .env with your environment variables"
-log "  4. Add your Python code to the python/ directory"
-log "  5. Rebuild when you make changes: docker build -t $PROJECT_NAME ."
-log "  6. Run your code: docker run --rm -it $PROJECT_NAME python your_script.py"
+log_success "Docker isolated environment setup completed!"
+log_info ""
+log_info "Next steps:"
+log_info "  1. Navigate to the python/ directory: cd python/"
+log_info "  2. Copy .env.example to .env: cp .env.example .env"
+log_info "  3. Edit .env with your environment variables"
+log_info "  4. Add your Python code to the python/ directory"
+log_info "  5. Rebuild when you make changes: docker build -t $PROJECT_NAME ."
+log_info "  6. Run your code: docker run --rm -it $PROJECT_NAME python your_script.py"
+
+# Verification
+# Run `scripts/verify-all.sh` after the image build completes.

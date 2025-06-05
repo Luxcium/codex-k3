@@ -1,26 +1,29 @@
 #!/usr/bin/env bash
+# Validate Memory Bank dependency structure
+# Cross-Reference: memory-bank/dependencies.md and .clinerules/main-rules.md.
 set -euo pipefail
-
-log() {
-  echo "[$(date -u '+%Y-%m-%dT%H:%M:%SZ')] $1"
-}
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/logging.sh"
 
 FILE="memory-bank/dependencies.md"
 
 if [ ! -f "$FILE" ]; then
-  log "[ERROR] $FILE not found"
+  log_error "$FILE not found"
   exit 1
 fi
 
 if grep -q "Dependencies and Relationships" "$FILE"; then
-  log "dependencies.md structure valid"
+  log_info "dependencies.md structure valid"
 else
-  log "[ERROR] dependencies.md missing structure"
+  log_error "dependencies.md missing structure"
   exit 1
 fi
 
-log "Verifying Markdown compliance…"
+log_info "Verifying Markdown compliance…"
 markdownlint --config .markdownlint.yaml "$FILE" || {
-  echo "[ERROR] $FILE failed markdownlint."
+  log_error "$FILE failed markdownlint."
   exit 1
 }
+
+# Verification
+# Run `scripts/verify-all.sh` to ensure repository consistency.

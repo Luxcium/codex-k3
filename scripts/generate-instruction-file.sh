@@ -1,40 +1,24 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # AI Agent Framework - Instruction File Generator
-# This script creates new .instructions.md files, providing structured templates
-# to be populated based on .github/instructions/ai-instruction-creation.instructions.md
+# Purpose: scaffold new `.instructions.md` files for AI agents.
+# Cross-Reference: memory-bank/dependencies.md and .clinerules/main-rules.md.
+# Templates are populated based on
+# .github/instructions/ai-instruction-creation.instructions.md
 
 set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/logging.sh"
 
 # Configuration
 INSTRUCTIONS_DIR=".github/instructions"
 PROMPTS_DIR=".github/prompts"
+FORCE="${FORCE:-no}"
 # Reference to the prompt that would be used by an AI to fill the generated template
 GENERATOR_PROMPT_FOR_AI_FILLING="$PROMPTS_DIR/instruction-generator.prompt.md"
 
 # Colors for output
-RED=\'\\033[0;31m\'
-GREEN=\'\\033[0;32m\'
-YELLOW=\'\\033[1;33m\'
-BLUE=\'\\033[0;34m\'
-NC=\'\\033[0m\' # No Color
-
-# Helper functions
-log_info() {
-    echo -e "${BLUE}[INFO]${NC} $1"
-}
-
-log_success() {
-    echo -e "${GREEN}[SUCCESS]${NC} $1"
-}
-
-log_warning() {
-    echo -e "${YELLOW}[WARNING]${NC} $1"
-}
-
-log_error() {
-    echo -e "${RED}[ERROR]${NC} $1"
-}
+# Logging handled by scripts/lib/logging.sh
 
 # Check if the conceptual generator prompt (for AI content filling) exists
 check_conceptual_generator_prompt() {
@@ -73,11 +57,15 @@ check_file_exists() {
     
     if [[ -f "$filepath" ]]; then
         log_warning "File already exists: $filepath"
-        read -p "Do you want to overwrite it? (y/N): " -n 1 -r
-        echo
-        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-            log_info "Operation cancelled."
-            exit 0
+        if [[ "$FORCE" != "yes" ]]; then
+            read -p "Do you want to overwrite it? (y/N): " -n 1 -r
+            echo
+            if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+                log_info "Operation cancelled."
+                exit 0
+            fi
+        else
+            log_warn "Overwriting $filepath due to FORCE=yes"
         fi
     fi
 }
@@ -329,7 +317,11 @@ OPTIONAL ARGUMENTS:
                           documentation  - For documentation conventions
                           file-org       - For file and directory organization rules
                           general        - (Default) A general-purpose template
+    --force             Overwrite existing files without prompt
     -h, --help          Show this help message
+
+Environment Variables:
+    FORCE=yes          Overwrite existing files without prompt
 
 EXAMPLES:
     $0 -n "python-coding-style.instructions.md" -a "**/*.py" -d "Python Coding Style Standards" -t language
@@ -377,6 +369,10 @@ main() {
                 shift # past argument
                 shift # past value
                 ;;
+            --force)
+                FORCE=yes
+                shift
+                ;;
             *)    # unknown option
                 log_error "Unknown option: $1"
                 show_usage
@@ -421,3 +417,6 @@ main() {
 
 # Entry point
 main "$@"
+
+# Verification
+# Run `scripts/verify-all.sh` after creating an instruction file.

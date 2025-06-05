@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
+# Run full repository checks for Markdown and Memory Bank files.
+# Cross-Reference: .clinerules/verification.md.
 set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/logging.sh"
 
-log() {
-  echo "[$(date -u '+%Y-%m-%dT%H:%M:%SZ')] $1"
-}
-
-log "Running full repository verification"
+log_info "Running full repository verification"
 
 scripts/check-markdown.sh
 scripts/check-dependencies.sh
 scripts/check-memory-bank.sh
 
-log "Verification complete"
+log_info "Verification complete"
+
+# Verification
+# This script performs all repository checks.

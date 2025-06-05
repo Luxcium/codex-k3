@@ -1,10 +1,12 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 # Autonomous State Manager for Codex CLI
-# Updates project state automatically after AI agent actions
-# Called by other scripts to maintain current project status
+# Purpose: update Memory Bank progress and context automatically.
+# Cross-Reference: memory-bank/progress.md and .clinerules/main-rules.md.
+# Called by other scripts to maintain current project status.
 
 set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/lib/logging.sh"
 
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 MEMORY_BANK="$PROJECT_ROOT/memory-bank"
@@ -76,9 +78,9 @@ scan_project_changes() {
     fi
     
     if [ "$changes_detected" = true ]; then
-        echo "✅ Project state updated automatically"
+        log_success "Project state updated automatically"
     else
-        echo "ℹ️ No changes detected since last update"
+        log_info "No changes detected since last update"
     fi
 }
 
@@ -104,3 +106,6 @@ case "${1:-scan}" in
         echo "  context <component> <status>"
         ;;
 esac
+
+# Verification
+# Run `scripts/verify-all.sh` after automatic updates.

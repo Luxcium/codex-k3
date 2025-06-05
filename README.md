@@ -66,20 +66,6 @@ All operational rules and protocols are maintained in the modular files under `.
 3. Place all future shell scripts in the `scripts/` directory.
 4. Update this README with any new rules before implementing them.
 
-## Top-Level Folder Conventions
-
-We organize code by language and framework at the project root:
-
-- `src/` — Main TypeScript project source. When both a TypeScript library and a Next.js web app coexist, place the TS code in `src/` and the Next.js app in `web/`. If the codebase consists solely of a Next.js application, you may omit `web/` and host the app directly at the project root.
-
-- `web/` — Next.js application when coexisting with other code.
-
-- `scripts/` — Shell scripts for setup and automation. Only shell scripts should live here.
-
-- `python/` — Python projects, modules, and utilities.
-
-- `notebooks/` — Jupyter notebooks and related resources.
-
 ## Directory Structure Guidelines
 
 Code is organized by language and framework at the project root:
