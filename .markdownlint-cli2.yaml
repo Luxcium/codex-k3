@@ -1,0 +1,5 @@
+config: .markdownlint.yaml
+fix: true
+ignores:
+
+- node_modules

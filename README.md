@@ -137,6 +137,20 @@ Coding standards that are automatically applied during AI-assisted development:
 - **Memory Bank Integration:** All components reference and update dependency tracking
 - **Markdown-lint Compliance:** All files follow strict markdown formatting requirements
 
+## Formatting and Linting
+
+Run Prettier and markdownlint to keep files consistent:
+
+```bash
+npm install
+npm run format       # Prettier fixes formatting
+npm run lint:md      # Check Markdown
+npm run lint:md:fix  # Auto-fix Markdown issues
+```
+
+Auto format on save is enabled via `.vscode/settings.json` when the
+relevant extensions are installed.
+
 ---
 
 > This README and all scripts must remain markdown-lint strict mode compliant at all times.

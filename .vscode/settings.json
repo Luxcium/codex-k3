@@ -90,11 +90,14 @@
     "source.fixAll": "always",
     "source.fixAll.eslint": "explicit",
     "source.fixAll.prettier": "always",
+    "source.fixAll.markdownlint": "always",
     "source.organizeImports": "explicit",
     "source.sortImports": "always",
 
     "source.fixAll.ts": "explicit"
   },
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
   "editor.inlineSuggest.showToolbar": "always",
   "editor.minimap.renderCharacters": false,
   "editor.minimap.showSlider": "always",

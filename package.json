@@ -1,0 +1,16 @@
+{
+  "name": "codex-k3",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "prettier --write \"**/*.{js,ts,md,json,yml,yaml}\"",
+    "lint:md": "markdownlint-cli2 \"**/*.md\"",
+    "lint:md:fix": "markdownlint-cli2-fix \"**/*.md\"",
+    "lint": "npm run lint:md && npm run format"
+  },
+  "devDependencies": {
+    "markdownlint-cli2": "^0.18.1",
+    "prettier": "^3.5.3"
+  }
+}
