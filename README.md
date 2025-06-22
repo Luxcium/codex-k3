@@ -140,3 +140,16 @@ Coding standards that are automatically applied during AI-assisted development:
 ---
 
 > This README and all scripts must remain markdown-lint strict mode compliant at all times.
+
+## Formatting and Linting
+
+All Markdown documents and code files must remain consistently formatted.
+Run the helper scripts to check and automatically fix style issues:
+
+```bash
+scripts/fix-markdown.sh     # Auto-fix markdownlint issues
+scripts/format-code.sh      # Run Prettier across the repository
+```
+
+Configure VS Code with the Prettier and markdownlint extensions to enable
+format-on-save. These settings are provided in `.vscode/settings.json`.

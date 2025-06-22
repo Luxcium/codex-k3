@@ -5,10 +5,10 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/lib/logging.sh"
 
-log_info "Running markdownlint on all tracked markdown files"
+log_info "Running markdownlint with automatic fixes on all tracked markdown files"
 files=$(git ls-files '*.md')
-if markdownlint --help | grep -q -- '--strict'; then
-  markdownlint --config .markdownlint.yaml --strict $files
+if markdownlint --help | grep -q -- '--fix'; then
+  markdownlint --config .markdownlint.yaml --fix --strict $files
 else
   log_warn "markdownlint --strict not supported; running without strict mode"
   markdownlint --config .markdownlint.yaml $files

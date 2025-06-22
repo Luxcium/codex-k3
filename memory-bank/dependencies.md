@@ -1,5 +1,12 @@
 #### Dependency: Conditional Python Environment Framework (2025-02-06)
 
+#### Dependency: Markdownlint and Prettier Tooling (2025-06-22)
+
+**Rationale:** Enforces consistent formatting with automatic fixes.
+**Depends On:** projectbrief.md, techContext.md
+**Required By:** scripts/fix-markdown.sh, scripts/format-code.sh
+**Impact Analysis:** Maintains code quality across AI agents and contributors.
+
 **Rationale:** Enables runtime selection of environment via ENV_MODE.
 **Depends On:** projectbrief.md, systemPatterns.md, techContext.md
 **Required By:** scripts/setup_python_env.sh and related scripts
@@ -211,6 +218,11 @@ Project Root
   - VS Code Copilot applies conditional instructions via `applyTo: "python/**"`
   - Cline AI follows `.clinerules/` protocols for conditional setup
   - Codex CLI executes script-driven conditional automation
+
+### Markdownlint and Prettier Tooling
+- **Added**: `.prettierrc.yaml` and `.prettierignore` for consistent formatting
+- **Scripts**: `fix-markdown.sh` and `format-code.sh` automate fixing
+- **Integration**: VS Code settings enable format-on-save with Prettier and markdownlint
 
 ### AI Agent Framework Enhancement
 - **Improved**: Cross-referencing between prompt files and Memory Bank

@@ -1,4 +1,3 @@
-# Dependency caches
 node_modules/
+.python/
 python/.venv/
-.env

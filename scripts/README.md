@@ -55,6 +55,8 @@ Each script is referenced by Memory Bank files for reproducible setup.
 - `check-dependencies.sh` — verify `memory-bank/dependencies.md`
 - `check-memory-bank.sh` — lint all `memory-bank/*.md` files
 - `check-markdown.sh` — run markdownlint on all tracked Markdown files
+- `fix-markdown.sh` — automatically fix Markdown issues using markdownlint
+- `format-code.sh` — format repository files with Prettier
 - `validate-instructions.sh` — lint `.github/instructions/*.instructions.md`
 - `validate-prompt.sh` — lint `.github/prompts/*.prompt.md`
 - `generate-instruction-file.sh` — scaffold new instruction templates (use `--force` or `FORCE=yes` to skip overwrite prompts)

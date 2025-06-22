@@ -35,7 +35,7 @@
   // "accessibility.signals.chatResponseReceived": {
   //   "sound": "auto"
   // },
-  // "prettier.configPath": ".prettierrc",
+  "prettier.configPath": ".prettierrc.yaml",
   // "[typescript]": {
   //   "editor.defaultFormatter": "esbenp.prettier-vscode"
   // },
@@ -71,8 +71,8 @@
     */
   // #region: FORMAT BEHAVIOUR                                               !
   // "editor.formatOnPaste": false,
-  // "editor.formatOnSave": true,
-  // "editor.formatOnSaveMode": "file",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
   // "editor.formatOnType": false,
   // "editor.suggest.showFiles": true,
   // "editor.suggest.showFolders": true,
