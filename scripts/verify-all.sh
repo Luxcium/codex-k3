@@ -7,6 +7,7 @@ source "$SCRIPT_DIR/lib/logging.sh"
 
 log_info "Running full repository verification"
 
+scripts/fix-markdown.sh
 scripts/check-markdown.sh
 scripts/check-dependencies.sh
 scripts/check-memory-bank.sh

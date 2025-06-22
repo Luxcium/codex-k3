@@ -51,6 +51,7 @@ Current work focuses on hardening automation scripts for repeatable use. Tasks i
 - Update `memory-bank/docker-workflow.md` with new conditional Docker patterns
 - Update `memory-bank/progress.md` with completed framework status
 - Record script-resilience improvements, including logging library and force options
+- Add `scripts/fix-markdown.sh` for Prettier and markdownlint automation
 
 ### Testing
 - Run each environment mode to validate behavior

@@ -103,6 +103,7 @@ All prompts, instruction files, and scripts must end with a **Verification** sec
 This block reminds contributors to run:
 
 - `markdownlint --strict` on all updated Markdown files
+- `scripts/fix-markdown.sh` to apply Prettier and markdownlint fixes
 - Any relevant validation scripts such as `scripts/verify-all.sh`
 
 Failure to include this block or run the checks is considered non-compliant.

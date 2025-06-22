@@ -22,12 +22,17 @@
   "terminal.integrated.persistentSessionReviveProcess": "never",
   "terminal.integrated.localEchoLatencyThreshold": 30,
 
+  "editor.formatOnSave": true,
+
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
     "diffEditor.ignoreTrimWhitespace": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.markdownlint": true
+    }
   },
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"

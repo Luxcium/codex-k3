@@ -55,6 +55,10 @@ This file tracks all project dependencies, their relationships, and integration 
 - **Web Framework**: Next.js application in `web/` (when applicable)
 
 ## Development Dependencies
+### Documentation Linters
+- **markdownlint**: Enforces Markdown style and supports automatic fixes.
+- **Prettier**: Formats Markdown consistently and integrates with markdownlint.
+
 
 ### Conditional Python Environment System
 - **Runtime Parameter System**:

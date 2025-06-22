@@ -31,6 +31,7 @@ This file tracks what works, what remains to be built, current status, and known
 - Repository documentation updated to reference new rules
 - Python standards instruction file published
 - VS Code settings updated for Copilot 1.101+
+- Markdownlint and Prettier automation via `scripts/fix-markdown.sh`
 
 <!-- ai:section:whats-left -->
 ## What's Left
