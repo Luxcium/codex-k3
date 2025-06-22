@@ -34,6 +34,7 @@ All operational rules and protocols are maintained in the modular files under `.
     - `README.md` (file)
     - `AGENTS.md` (file, replaces any use of `codex.md`)
     - `memory-bank/dependencies.md` (file)
+
 ## AGENTS.md Migration
 
 - `AGENTS.md` is now the default repository context/instructions markdown file for Codex CLI and related tools.
@@ -94,6 +95,7 @@ Code is organized by language and framework at the project root:
 ## Script Validation and Logging
 
 The `scripts/setup_project.sh` script now includes:
+
 - File existence and size checks before writing
 - Directory creation with `mkdir -p` and validation
 - Logging of all actions (creation, skipping, size reporting)
@@ -109,6 +111,7 @@ This project includes a modular AI agent framework for automated code generation
 ### Prompt Files (`.github/prompts/`)
 
 Parametric prompt templates for AI-assisted development workflows:
+
 - **`ai-template-manager.prompt.md`** — Enhanced template generation with parametric inputs
 - **`script-generator.prompt.md`** — Resilient automation script generation
 - **`docker-generator.prompt.md`** — Parameterized Docker configuration generation
@@ -118,6 +121,7 @@ Parametric prompt templates for AI-assisted development workflows:
 ### Instruction Files (`.github/instructions/`)
 
 Coding standards that are automatically applied during AI-assisted development:
+
 - **`typescript-standards.instructions.md`** — Comprehensive TypeScript coding standards
 - **`python-standards.instructions.md`** — PEP 8 and modern Python practices
 - **`python-notebook-standards.instructions.md`** — Jupyter notebook standards and ML best practices
@@ -136,6 +140,15 @@ Coding standards that are automatically applied during AI-assisted development:
 - **Standards Enforcement:** Automatic application of coding standards during generation
 - **Memory Bank Integration:** All components reference and update dependency tracking
 - **Markdown-lint Compliance:** All files follow strict markdown formatting requirements
+
+### Formatting and Linting
+
+This project enforces automatic formatting and linting.
+
+- **Prettier**: configuration in `.prettierrc.yaml`. Run `scripts/check-prettier.sh` or `npx prettier --write` to fix files.
+- **Markdownlint**: configuration in `.markdownlint.yaml`. Run `scripts/check-markdown.sh` or `npx markdownlint --fix "**/*.md"`.
+
+VS Code users can enable format-on-save with the Prettier and markdownlint extensions.
 
 ---
 
