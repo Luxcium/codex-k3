@@ -1,10 +1,13 @@
 ## [2025-02-06]
+
 # activeContext.md
 
 ## Purpose
+
 This file tracks the current work focus, recent changes, next steps, and active decisions for any project. It is the primary reference for understanding the present state of the project, independent of any specific topic at initialization.
 
 ## Structure
+
 - **Current Work Focus:** What is being worked on right now.
 - **Recent Changes:** Summary of the latest updates.
 - **Next Steps:** Planned actions and priorities.
@@ -15,51 +18,58 @@ This file tracks the current work focus, recent changes, next steps, and active 
 
 ## Current Work Focus
 
-Completed conditional Python environment framework that provides three environment modes (local virtual environment, Docker isolated, Docker volume-mounted) through parameterized instructions and scripts. The framework defers hard implementation choices to runtime via ENV_MODE parameter, following project's script-driven creation protocols.
+Completed linting and formatting infrastructure setup with comprehensive automated code quality enforcement. Moved from `files/` staging directory to project root, implementing VS Code integration, pre-commit hooks, and automated formatting standards. This foundational quality infrastructure supports all future development work across the project.
 
-Current work focuses on hardening automation scripts for repeatable use. Tasks include standardizing script headers, creating a shared logging library, adding non-interactive `--force` options, and updating documentation so AI agents understand when and how to use each script.
+Current work focuses on validating the linting setup and ensuring all Memory Bank files are compliant with the new markdown-lint and prettier standards. The infrastructure includes automated format-on-save, pre-commit validation, and AI agent-compatible configuration.
 
 ## Recent Changes
 
-- **Conditional Python Environment Framework**: Created comprehensive conditional setup system:
-  - `.github/instructions/python-environment-conditional.instructions.md` - Parameter-driven conditional instructions
-  - `.github/prompts/python-environment-setup.prompt.md` - User-facing prompt for mode selection
-  - `scripts/setup_python_env.sh` - Main entry script with ENV_MODE parameter routing
-  - `scripts/setup_python_local.sh` - Local virtual environment setup with comprehensive documentation
-  - `scripts/setup_python_docker_isolated.sh` - Fully isolated Docker environment setup
-  - `scripts/setup_python_docker_volume.sh` - Volume-mounted Docker environment with live editing
-- **Parameter-Driven Architecture**: Implemented true conditional logic:
-  - ENV_MODE parameter determines runtime behavior (local, docker_isolated, docker_volume)
-  - PYTHON_VERSION and PROJECT_NAME parameters for customization
-  - No hard-coded choices in instruction files or scripts
-  - Mode-specific README.md generation with complete documentation
-- **Project Protocol Compliance**: Followed established patterns:
-  - Script-driven creation in `scripts/` directory
-  - Idempotent scripts with existence checks and user prompts
-  - Cross-references to Memory Bank and instruction files
-  - Integration with three AI agent system (Cline AI, Codex CLI, VS Code Copilot)
-- **Quality Assurance**: Comprehensive testing and validation:
-  - Docker build verification in isolated and volume modes
-  - Python version checking and virtual environment testing
-  - Mode-switching capabilities documented and tested
-  - Complete troubleshooting guides for each environment type
+- **Linting & Formatting Infrastructure**: Implemented comprehensive automated code quality system:
+  - Moved configuration files from `files/` staging directory to project root
+  - `.editorconfig` - Cross-editor consistency configuration
+  - `.prettierrc.yaml` - Prettier formatting rules and standards
+  - `.markdownlint.yaml` - Strict markdown linting configuration
+  - `.husky/pre-commit` - Git pre-commit hooks for automated validation
+  - `setup-linting.sh` - Automated setup script for linting infrastructure
+- **VS Code Integration**: Enhanced development environment configuration:
+  - Format-on-save enabled for all file types
+  - Prettier as default formatter with config path specification
+  - Enhanced Copilot Chat settings with instruction/prompt file support
+  - Markdown-specific formatting rules and validation
+  - Terminal environment variables for Codex integration
+- **Documentation Standards**: Established automated quality enforcement:
+  - `LINTING.md` - Comprehensive documentation of linting standards
+  - Updated `README.md` with linting and formatting section
+  - Mandatory autofix requirements for all contributors and AI agents
+  - Integration with existing script-driven creation protocols
+- **Project Infrastructure**: Foundational quality improvements:
+  - Removed staging files after successful migration to project root
+  - Automated pre-commit validation prevents non-compliant commits
+  - All future development must meet formatting and linting standards
+  - Enhanced VS Code extensions configuration for recommended tooling
 
 ## Next Steps
 
-### Documentation Updates
-- Update `memory-bank/dependencies.md` with conditional Python environment dependencies
-- Update `memory-bank/docker-workflow.md` with new conditional Docker patterns
-- Update `memory-bank/progress.md` with completed framework status
-- Record script-resilience improvements, including logging library and force options
+### Infrastructure Validation
 
-### Testing
-- Run each environment mode to validate behavior
-- Execute all scripts twice to confirm idempotency
+- Test linting infrastructure across all project files
+- Validate markdown-lint compliance for all Memory Bank documentation
+- Verify prettier formatting consistency across configuration files
+- Confirm pre-commit hooks function correctly with sample commits
 
-### Expansion
-- Document lessons learned about conditional instruction design
-- Explore applying framework to other languages (Node.js, etc.)
-- Share logging utilities across additional language setups
+### Memory Bank Compliance
+
+- Review all Memory Bank files for new linting standards
+- Update cross-references to match formatting requirements
+- Ensure all documentation meets strict markdown-lint rules
+- Validate VS Code settings integration with AI agent workflows
+
+### Quality Enforcement
+
+- Test automated format-on-save functionality
+- Verify AI agent compatibility with new linting standards
+- Document best practices for maintaining code quality
+- Create validation workflows for ongoing compliance monitoring
 
 ## Active Decisions
 
@@ -67,9 +77,10 @@ Current work focuses on hardening automation scripts for repeatable use. Tasks i
 - All setup and file/folder creation must be performed via scripts in the `scripts/` directory, never manually.
 - Scripts must be idempotent, must not overwrite existing files, and must warn or skip if files/folders exist.
 - All documentation and scripts must be markdown-lint strict mode compliant.
-- **Conditional Framework Standard**: Instruction files must use parameter-driven conditional sections rather than hard-coded implementation choices.
-- **Runtime Decision Deferral**: Environment setup modes determined by ENV_MODE parameter at script execution time, not at instruction creation time.
-- **Mode-Specific Documentation**: Each environment mode generates complete, standalone documentation appropriate for that specific setup.
+- **Automated Code Quality**: All code and documentation must pass linting and formatting validation before commit.
+- **Format-on-Save Standard**: VS Code configuration enforces automatic formatting to maintain consistency.
+- **Pre-Commit Validation**: Git hooks prevent commits that don't meet quality standards.
+- **Documentation Standards**: All markdown files must comply with strict linting rules and prettier formatting.
 
 ## Dependencies and Relationships
 
@@ -87,6 +98,7 @@ Current work focuses on hardening automation scripts for repeatable use. Tasks i
 ## AI Agent Instructions
 
 This project supports three AI agents with specific entry points:
+
 - **Cline AI** → `.clinerules/main-rules.md` (Cline AI's primary instruction file)
 - **Codex CLI** → `AGENTS.md` (Codex CLI's primary instruction file)
 - **VS Code Copilot** → `.github/copilot-instructions.md` (VS Code Copilot's primary instruction file)

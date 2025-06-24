@@ -1,9 +1,11 @@
 # systemPatterns.md
 
 ## Purpose
+
 This file documents the system architecture, key technical decisions, design patterns, and component relationships for any project. It serves as a living reference for how the system is structured and how its parts interact, independent of any specific project topic at initialization.
 
 ## Structure
+
 - **Architecture Overview:** General structure and organization principles.
 - **Key Technical Decisions:** Rationale for major choices.
 - **Design Patterns:** Patterns and conventions to be followed.
@@ -42,6 +44,10 @@ This Memory Bank is initialized to provide a clear, adaptable template for docum
 - All setup and file/folder creation must be performed via scripts in the `scripts/` directory, never manually.
 - Scripts must be idempotent, must not overwrite existing files, and must warn or skip if files/folders exist.
 - All documentation and scripts must be markdown-lint strict mode compliant.
+- **Automated Code Quality Enforcement**: Implemented comprehensive linting and formatting infrastructure
+  - Pre-commit hooks prevent non-compliant code from being committed
+  - VS Code integration with format-on-save ensures consistency
+  - All contributors and AI agents must follow automated quality standards
 - All major technical decisions must be documented here.
 - Rationale for each decision should be clear and accessible.
 - Updates must be made as the system evolves.
@@ -51,22 +57,37 @@ This Memory Bank is initialized to provide a clear, adaptable template for docum
 - **Command Pattern**
 - **Adapter Pattern**
 - **Observer Pattern**
+- **Quality Gate Pattern**: Automated validation prevents non-compliant code progression
+- **Configuration as Code**: All linting and formatting rules stored in version-controlled configuration files
+- **Zero-Tolerance Quality**: Pre-commit hooks enforce standards without exceptions
 
 ## Component Relationships
+
+### Linting Infrastructure Components
+
+- **Configuration Files**: `.markdownlint.yaml`, `.prettierrc.yaml`, `.editorconfig` define quality standards
+- **Git Hooks**: `.husky/pre-commit` enforces validation before commits
+- **VS Code Integration**: `.vscode/settings.json` provides development environment consistency
+- **Setup Script**: `setup-linting.sh` automates infrastructure deployment
+
+### Quality Enforcement Flow
+
+```
+Developer writes code → VS Code auto-formats on save → Git commit triggers pre-commit hook → Validation passes/fails → Commit accepted/rejected
+```
 
 - Clearly describe how components interact and depend on each other.
 - Update this section as new components are added or relationships change.
 
 ## Dependencies and Relationships
 
-| File | Relationship |
-| --- | --- |
-| [projectbrief.md](./projectbrief.md) | foundation |
-| [productContext.md](./productContext.md) | defines goals |
-| [techContext.md](./techContext.md) | implementation guidance |
-| [activeContext.md](./activeContext.md) | consumes patterns |
-| [progress.md](./progress.md) | tracks decisions |
-
+| File                                     | Relationship            |
+| ---------------------------------------- | ----------------------- |
+| [projectbrief.md](./projectbrief.md)     | foundation              |
+| [productContext.md](./productContext.md) | defines goals           |
+| [techContext.md](./techContext.md)       | implementation guidance |
+| [activeContext.md](./activeContext.md)   | consumes patterns       |
+| [progress.md](./progress.md)             | tracks decisions        |
 
 ## Call to Action
 

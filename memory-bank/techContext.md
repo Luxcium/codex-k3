@@ -1,9 +1,11 @@
 # techContext.md
 
 ## Purpose
+
 This file documents the technologies, development setup, technical constraints, and dependencies for any project. It provides a clear reference for all technical aspects, independent of any specific project topic at initialization.
 
 ## Structure
+
 - **Technologies Used:** General categories and rationale.
 - **Development Setup:** Environment and tooling guidelines.
 - **Technical Constraints:** Known limitations or requirements.
@@ -19,6 +21,13 @@ This file documents the technologies, development setup, technical constraints, 
 - **Python 3.11**
 - **Next.js 14**
 
+### Code Quality & Formatting
+
+- **markdownlint** - Markdown linting with strict rules
+- **Prettier** - Code and document formatting
+- **Husky** - Git hooks for pre-commit validation
+- **EditorConfig** - Cross-editor consistency configuration
+
 ## Development Setup
 
 - The project root must be organized by language and framework as specified in [systemPatterns.md](./systemPatterns.md):
@@ -29,7 +38,20 @@ This file documents the technologies, development setup, technical constraints, 
   - `notebooks/` for Jupyter notebooks
   - All directory and file creation must be performed via scripts in `scripts/`, never manually.
 
+### Automated Code Quality Setup
+
+- **Linting Infrastructure**: Run `setup-linting.sh` to configure automated quality tools
+- **VS Code Configuration**: Enhanced settings with format-on-save and linting integration
+- **Pre-commit Hooks**: Automatic validation prevents non-compliant commits
+- **Documentation Standards**: All files must pass markdownlint and prettier validation
+
+### Required VS Code Extensions
+
+- `esbenp.prettier-vscode` - Prettier formatting
+- `DavidAnson.vscode-markdownlint` - Markdown linting
+
 Refer to the centralized directory structure diagram in [systemPatterns.md](./systemPatterns.md) for the latest and authoritative version.
+
 - Document environment setup and configuration.
 - Ensure instructions are clear for onboarding new agents or contributors.
 - Update as tooling or setup changes.
@@ -37,11 +59,27 @@ Refer to the centralized directory structure diagram in [systemPatterns.md](./sy
 ## Technical Constraints
 
 - Codebase organization must follow the standard described in [systemPatterns.md](./systemPatterns.md).
- - All setup and file/folder creation must follow the patterns in [.clinerules/pattern-examples.md](../.clinerules/pattern-examples.md).
+- All setup and file/folder creation must follow the patterns in [.clinerules/pattern-examples.md](../.clinerules/pattern-examples.md).
+- **Code Quality Requirements**: All code and documentation must pass linting and formatting validation
+- **Pre-commit Validation**: Git commits are blocked if files don't meet quality standards
+- **Format-on-Save Mandatory**: VS Code must be configured for automatic formatting
+- **Documentation Compliance**: All markdown files must comply with strict markdownlint rules
 - List any known limitations or requirements.
 - Update as new constraints are discovered or resolved.
 
 ## Dependencies
+
+### Core Development Dependencies
+
+- markdownlint and markdownlint-cli for markdown validation
+- prettier for code and document formatting
+- husky for git hook management
+- lint-staged for pre-commit file processing
+
+### VS Code Extensions (Recommended)
+
+- esbenp.prettier-vscode
+- DavidAnson.vscode-markdownlint
 
 - Document all dependencies and their purposes.
 - Update this section as dependencies are added, removed, or updated.

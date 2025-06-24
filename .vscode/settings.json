@@ -1,18 +1,44 @@
 {
- "terminal.integrated.env.linux": {
+  "editor.formatOnSave": true,
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll": "always"
+  // },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Markdown-specific settings
+  // "[markdown]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  //   "editor.formatOnSave": true,
+  //   "editor.rulers": [100]
+  // },
+
+  // Prettier settings
+  "prettier.requireConfig": true,
+  "prettier.configPath": ".prettierrc.yaml",
+
+  // Markdownlint settings
+  // "markdownlint.config": ".markdownlint.yaml",
+  // "markdownlint.run": "onSave",
+  // "markdownlint.ignore": [
+  //   "node_modules/**",
+  //   "dist/**",
+  //   ".github/workflows/*.md"
+  // ],
+
+   "terminal.integrated.env.linux": {
         "CODEX_HOME": "${workspaceFolder}/.codex"
     },
     // Ensure instruction files are also enabled (they work together)
   "github.copilot.chat.codeGeneration.useInstructionFiles": true,
-  
+
   // Add instructions file locations to work alongside prompts
   "chat.instructionsFilesLocations": {
     ".github/instructions": true
   },
-  
+
   // Ensure prompt files are explicitly enabled
   "chat.promptFiles": true,
-  
+
   // Your existing prompt location is correct
   "chat.promptFilesLocations": {
     ".github/prompts": true
@@ -1157,7 +1183,7 @@
   "chat.editor.fontSize": 14,
   "chat.editor.fontWeight": "normal",
   "chat.editor.wordWrap": "on",
- 
+
   // ========================================
   // Experimental and Preview Features
   // ========================================
@@ -1166,7 +1192,7 @@
   // ========================================
   // Instructions and Prompt Files
   // ========================================
- 
+
   "chat.sendElementsToChat.enabled": true,
   // Experimental features
   "chat.tools.autoApprove": true,
