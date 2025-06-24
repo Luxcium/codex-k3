@@ -1,50 +1,78 @@
-MD001: true
-MD002: true
-MD003: true
-MD004: true
-MD005: true
-MD006: true
-MD007: true
-MD008: true
-MD009: true
-MD010: true
-MD011: true
-MD012: true
-MD013: true
-MD014: true
-MD015: true
-MD016: true
-MD017: true
-MD018: true
-MD019: true
-MD020: true
-MD021: true
-MD022: true
-MD023: true
-MD024: true
-MD025: true
-MD026: true
-MD027: true
-MD028: true
-MD029: true
-MD030: true
-MD031: true
-MD032: true
-MD033: true
-MD034: true
-MD035: true
-MD036: true
-MD037: true
-MD038: true
-MD039: true
-MD040: true
-MD041: true
-MD042: true
-MD043: true
-MD044: true
-MD045: true
-MD046: true
-MD047: true
-MD048: true
-MD049: true
-MD050: true
+---
+# Markdownlint Configuration (https://github.com/DavidAnson/markdownlint)
+# Enforce strict rules with autofixable options enabled
+
+default: true  # Enable all rules by default
+
+# Customize specific rules
+MD003:
+  style: "consistent"  # Heading style must be consistent
+
+MD004:
+  style: "dash"  # Unordered list style must use dashes
+
+MD007:
+  indent: 2  # Unordered list indentation = 2 spaces
+
+MD009:
+  strict: true  # No trailing spaces except when needed
+
+MD010: true  # No hard tabs
+
+MD012:
+  maximum: 1  # Maximum 1 consecutive blank line
+
+MD013:
+  line_length: 100
+  code_blocks: false
+  tables: false
+
+MD022:
+  lines_above: 1
+  lines_below: 1  # Headings must be surrounded by blank lines
+
+MD024:
+  allow_different_nesting: true  # Allow same heading text in different contexts
+
+MD025:
+  level: 1  # Only one top-level heading
+
+MD030:
+  ul_single: 1
+  ol_single: 1
+  ul_multi: 1
+  ol_multi: 1  # Enforce spacing for list markers
+
+MD031: true  # Fenced code blocks should be surrounded by blank lines
+
+MD032: true  # Lists should be surrounded by blank lines
+
+MD033:
+  allowed_elements:
+    - "br"
+    - "img"  # Allow only specific HTML elements
+
+MD034: true  # Bare URLs should be enclosed in angle brackets
+
+MD035:
+  style: "---"  # Horizontal rules should use consistent style
+
+MD040: true  # Fenced code blocks should have language specified
+
+MD041: true  # First line in a file should be a top-level heading
+
+MD046:
+  style: "consistent"  # Code block style must be consistent
+
+MD047: true  # Files should end with a single newline character
+
+MD048:
+  style: "backtick"  # Code fence style
+
+MD049:
+  style: "asterisk"  # Emphasis style
+
+MD050:
+  style: "asterisk"  # Strong emphasis style
+
+MD055: true  # Table pipe style

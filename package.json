@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "lint:md": "markdownlint '**/*.md' --fix",
+    "lint:prettier": "prettier --check .",
+    "format:prettier": "prettier --write .",
+    "format": "npm run lint:md && npm run format:prettier",
+    "lint": "npm run lint:md && npm run lint:prettier",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "markdownlint": "^0.32.1",
+    "markdownlint-cli": "^0.37.0",
+    "prettier": "^3.1.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0"
+  },
+  "lint-staged": {
+    "*.md": [
+      "markdownlint --fix",
+      "prettier --write"
+    ],
+    "*.{json,yaml,yml}": [
+      "prettier --write"
+    ]
+  }
+}
