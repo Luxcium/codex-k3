@@ -137,6 +137,19 @@ Coding standards that are automatically applied during AI-assisted development:
 - **Memory Bank Integration:** All components reference and update dependency tracking
 - **Markdown-lint Compliance:** All files follow strict markdown formatting requirements
 
+## Linting and Formatting
+
+All documentation and source files are linted with `markdownlint` and formatted with `prettier`.
+
+Run `scripts/setup_linting.sh` once to install the required tooling. Afterwards use:
+
+```bash
+npm run lint
+npm run format
+```
+
+See [LINTING.md](./LINTING.md) for full details.
+
 ---
 
 > This README and all scripts must remain markdown-lint strict mode compliant at all times.

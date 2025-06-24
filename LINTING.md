@@ -33,10 +33,12 @@ npm run format:prettier
 ### VS Code Integration
 
 Install the recommended extensions (will be prompted automatically):
+
 - `esbenp.prettier-vscode`
 - `davidanson.vscode-markdownlint`
 
 VS Code is configured to:
+
 - Format on save
 - Apply autofix on save
 - Show linting errors inline
@@ -57,6 +59,7 @@ npm run format
 ### Git Hooks
 
 The project uses Husky and lint-staged to:
+
 - Automatically lint and format files on pre-commit
 - Prevent commits with unfixable linting errors
 
@@ -69,6 +72,7 @@ The project uses Husky and lint-staged to:
 ## For AI Agents
 
 AI agents (GitHub Copilot, etc.) must:
+
 - Write code that follows all linting rules to minimize autofix needs
 - Include proper formatting for all generated content
 - Be aware of the project's linting rules when suggesting code

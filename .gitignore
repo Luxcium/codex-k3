@@ -1,1 +1,6 @@
-# Placeholder for .gitignore
+# Node and package management
+node_modules/
+.husky/
+
+# Python virtual environments
+python/.venv/
