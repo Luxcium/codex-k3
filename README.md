@@ -140,3 +140,11 @@ Coding standards that are automatically applied during AI-assisted development:
 ---
 
 > This README and all scripts must remain markdown-lint strict mode compliant at all times.
+
+## Linting and Formatting
+
+This repository uses **markdownlint** and **Prettier** for consistency.
+
+- Run `npm run format` before committing.
+- See [LINTING.md](./LINTING.md) for full details.
+
